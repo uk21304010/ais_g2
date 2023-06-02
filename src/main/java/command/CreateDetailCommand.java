@@ -27,10 +27,8 @@ public class CreateDetailCommand extends AbstractCommand{
 		p.setPrice(img);
 
 		ModifyDao md = new ModifyDao();
-		String s = "‚³‚­‚ç";
-		int anum= md.getANum();  
-		String knum= md.getNumber(s);
-		md.setDetail(p,anum,knum);
+		String s = "ã•ãã‚‰";
+
 		
 		resc.setTarget("start");
 		return resc;
