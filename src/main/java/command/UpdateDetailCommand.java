@@ -29,9 +29,9 @@ public class UpdateDetailCommand extends AbstractCommand{
 		String[] imgs=reqc.getParameter("IMG");
 		String img= imgs[0];
 
-		p.setPid(name);
-		p.setName(con);
-		p.setPrice(img);
+		p.setName(name);
+		p.setCon(con);
+		p.setThumbnail(img);
 
  
 		int knum= md.getNumber(combo);

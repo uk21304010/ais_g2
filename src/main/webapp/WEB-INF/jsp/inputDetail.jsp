@@ -11,8 +11,8 @@
 <header> </header>
 <body>
 	<h1>Sakuraスレッド一覧</h1>
-	<form method='get' action='create' enctype="multipart/form-data">
-		<select name='COMBO'>
+	<form method='post' action='create' enctype="multipart/form-data">
+		<select name='COMBO' multiple>
 			<%
 	PreparedStatement ps = null;
 	Connection cn = null;
@@ -38,13 +38,12 @@
 
 		<h1>送信テスト</h1>
 
-		商品番号<input type='text' name='NAME'><br> 
-		商品名<input type='text' name='CON'><br> 
-		価格<input type='text'name='IMG'><br> 
-		<input type='file' name='IMGS'>
+		商品番号<input type='text' name='NAME' multiple><br> 
+		商品名<input type='text' name='CON' multiple><br> 
+		<input type='file' name='IMGS' multiple>
 		<input type='submit' value='登録'>
 	</form>
-
+	${result}
 	<a href="#" class="gotop">トップ</a>
 </body>
 </html>

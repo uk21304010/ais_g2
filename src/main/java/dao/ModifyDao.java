@@ -58,9 +58,9 @@ public class ModifyDao{
 			String sql = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, IMG_NAME =?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
 			st = con.prepareStatement(sql);
 			
-			st.setString(1, p.getPid());
-			st.setString(2, p.getName());
-			st.setString(3, p.getPrice());
+			st.setString(1, p.getName());
+			st.setString(2, p.getCon());
+			st.setString(3, p.getThumbnail());
 			st.setInt(4, knum);
 			st.setInt(5, anum);
 			
@@ -89,9 +89,9 @@ public class ModifyDao{
 			String sql = "INSERT INTO ATTRACTION_TBL VALUES (?,?,?,?,?)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, anum);
-			st.setString(2, p.getPid());
-			st.setString(3, p.getName());
-			st.setString(4, p.getPrice());
+			st.setString(2, p.getName());
+			st.setString(3, p.getCon());
+			st.setString(4, p.getThumbnail());
 			st.setInt(5, knum);
 			
 			st.executeUpdate();

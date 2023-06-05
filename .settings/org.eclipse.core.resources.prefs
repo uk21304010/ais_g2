@@ -1,6 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java/command/CreateDetailCommand.java=UTF-8
-encoding//src/main/java/command/Fileupload.java=UTF-8
 encoding//src/main/java/dto/Product.java=UTF-8
 encoding//src/main/java/servlet/FrontServlet.java=UTF-8
 encoding//src/main/java/servlet/WebRequestContext.java=UTF-8
