@@ -9,10 +9,11 @@ public class ModifyDetailCommand extends AbstractCommand{
 		RequestContext reqc=getRequestContext();
 		
 		String[]nums=reqc.getParameter("NUM");
-		String num = nums[0];
+		int num = Integer.parseInt(nums[0]);
 		
 		ModifyDao md = new ModifyDao();
-		md.
+		
+		resc.setResult(md.getDetail(num));
 		resc.setTarget("modifyDetail");
 		return resc;
 	}

@@ -18,9 +18,9 @@ public class ModifyDao{
 	private PreparedStatement st = null;
 	private ResultSet rs = null;
 	String s;
-	int i;
-	public String getNumber(String s) {
+	public int getNumber(String s) {
 		String sql = "Select KEYWORD_NUM from KEYWORD_TBL where KEYWORD_NAME = ?";
+		int i = 0;
 		try{
 
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -31,7 +31,7 @@ public class ModifyDao{
 			rs = st.executeQuery();
 
 			rs.next();
-			s = rs.getString(1);
+			i = Integer.parseInt(rs.getString(1));
 			
 			//ConnectionManager.getInstance().commit();
 
@@ -51,10 +51,40 @@ public class ModifyDao{
 				}
 			}
 		}
-		return s;
+		return i;
 	}
-	
-	public void setDetail(Product p,int anum,String knum) {
+	public void updateDetail(Product p,int anum,int knum) {
+		try{
+			con = ConnectionManager.getInstance().getConnection();
+			String sql = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, IMG_NAME =?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
+			st = con.prepareStatement(sql);
+			
+			st.setString(1, p.getPid());
+			st.setString(2, p.getName());
+			st.setString(3, p.getPrice());
+			st.setInt(4, knum);
+			st.setInt(5, anum);
+			
+			st.executeUpdate();
+			con.commit();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			ConnectionManager.getInstance().rollback();
+		}catch(Exception e) {
+			e.printStackTrace();
+			ConnectionManager.getInstance().rollback();
+	}finally {
+			if(st != null) {
+				try {
+					st.close();
+				}
+				catch(SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	public void setDetail(Product p,int anum,int knum) {
 		try{
 			con = ConnectionManager.getInstance().getConnection();
 			String sql = "INSERT INTO ATTRACTION_TBL VALUES (?,?,?,?,?)";
@@ -63,7 +93,7 @@ public class ModifyDao{
 			st.setString(2, p.getPid());
 			st.setString(3, p.getName());
 			st.setString(4, p.getPrice());
-			st.setInt(5, Integer.parseInt(knum));
+			st.setInt(5, knum);
 			
 			st.executeUpdate();
 			con.commit();
@@ -86,6 +116,7 @@ public class ModifyDao{
 	}
 	public int getANum() {
 		String sql = "Select max(attraction_num) from ATTRACTION_TBL";
+		int i=0;
 		try{
 
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -118,29 +149,32 @@ public class ModifyDao{
 		}
 		return i;
 	}
-	public int getContent(String s) {
-		String sql = "Select max(attraction_num) from ATTRACTION_TBL";
+	public Product getDetail(int num) {
+		String sql = "Select ATTRACTION_NAME,ATTRACTION_CON,IMG_NAME from ATTRACTION_TBL where ATTRACTION_NUM = ?";
+		Product p =new Product();
 		try{
 
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(LOCAL,USER,PASS);
 			
 			st = con.prepareStatement(sql);
+			st.setInt(1, num);
+			
 			rs = st.executeQuery();
 
 			rs.next();
-			
-			
-			i =rs.getInt(1)+1;
-			//ConnectionManager.getInstance().commit();
 
+			p.setName(rs.getString(1));
+			p.setCon(rs.getString(2));
+			p.setImg(rs.getString(3));
+			p.setAnum(num);
 		}catch(SQLException e) {
 			e.printStackTrace();
 			ConnectionManager.getInstance().rollback();
 		}catch(Exception e) {
 			e.printStackTrace();
 			ConnectionManager.getInstance().rollback();
-	}finally {
+		}finally {
 			if(st != null) {
 				try {
 					st.close();
@@ -150,7 +184,7 @@ public class ModifyDao{
 				}
 			}
 		}
-		return i;
+		return p;		
 	}
 }
 	
