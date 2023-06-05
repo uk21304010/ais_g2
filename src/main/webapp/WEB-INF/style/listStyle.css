@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+.attractionList {
+	display:flex;
+	flex-flow:row wrap;
+    justify-content: space-between;
+
+}
