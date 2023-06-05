@@ -8,9 +8,9 @@ public class WebRequestContext implements RequestContext{
     private HttpServletRequest request;
     public WebRequestContext(){}
 
-    public void setRequest(Object req){
-        request=(HttpServletRequest) req;//螟画焚request縺ｫ繝ｪ繧ｯ繧ｨ繧ｹ繝域ュ蝣ｱ險ｭ螳�
-        parameters=request.getParameterMap();//螟画焚parameters縺ｫrequest縺ｮ繝代Λ繝｡繝ｼ繧ｿ繧知apping縺励※險ｭ螳�
+    public void setRequest(Object req){//1. 여기가  파라미터를 보내면 받는 곳
+        request=(HttpServletRequest) req;
+        parameters=request.getParameterMap();
     }
     public String getCommandPath(){
         //螟画焚request縺ｫ縺ゅｋ繝ｪ繧ｯ繧ｨ繧ｹ繝医�ｮServletPath繧呈歓蜃ｺ
@@ -21,7 +21,7 @@ public class WebRequestContext implements RequestContext{
     public String[] getParameter(String key){
         return (String[])parameters.get(key);
     }
-    public Object getRequest(){
+    public Object getRequest(){ //setReques에서 설정한 것이 여기로 나온다. 
         return request;
     }    
 }

@@ -3,26 +3,55 @@ package dto;
 import java.io.Serializable;
 
 public class Product implements Serializable{
-	private String name;
-	private String price;
-	private String pid;
+	private String thumbnailScreen;
 	
-	public String getName() {
-		return name;
+	private String titlePlace;
+	
+	private String detailContent;
+	
+	private String subthumbScreen;
+	
+	private String titleSub;
+
+	public String getThumbnailScreen() {
+		return thumbnailScreen;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setThumbnailScreen(String thumbnailScreen) {
+		this.thumbnailScreen = thumbnailScreen;
 	}
-	public String getPrice() {
-		return price;
+
+	public String getTitlePlace() {
+		return titlePlace;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+
+	public void setTitlePlace(String titlePlace) {
+		this.titlePlace = titlePlace;
 	}
-	public String getPid() {
-		return pid;
+
+	public String getDetailContent() {
+		return detailContent;
 	}
-	public void setPid(String pid) {
-		this.pid = pid;
+
+	public void setDetailContent(String detailContent) {
+		this.detailContent = detailContent;
 	}
+
+	public String getSubthumbScreen() {
+		return subthumbScreen;
+	}
+
+	public void setSubthumbScreen(String subthumbScreen) {
+		this.subthumbScreen = subthumbScreen;
+	}
+
+	public String getTitleSub() {
+		return titleSub;
+	}
+
+	public void setTitleSub(String titleSub) {
+		this.titleSub = titleSub;
+	}
+	
+	
 }
