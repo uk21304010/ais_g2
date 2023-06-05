@@ -18,7 +18,7 @@ public class ContentInfoDao{
 	public ArrayList<Product> showDetail(int num) {
 		String select = " select attraction_name,Attraction_Con,Img_Name "
 				+ " from Keyword_tbl kt, Attraction_tbl at "
-				+ " where at.keyword_num = kt.keyword_Num and kt.keyword_num='?'";
+				+ " where at.keyword_num = kt.keyword_Num and kt.keyword_num= ? ";
 
 		ArrayList<Product> showDetail = new ArrayList<Product>();
 			
