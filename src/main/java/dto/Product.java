@@ -11,8 +11,7 @@ public class Product implements Serializable{
 	private int anum;
 	private String id;
 	private String pass;
-	
-<<<<<<< HEAD
+
 	
 	public String getId() {
 		return id;
@@ -43,14 +42,14 @@ public class Product implements Serializable{
 	}
 	public void setImg(String img) {
 		this.img = img;
-=======
-	private Integer atNum;//명소 번호
-	private String atName;//명소 이름
-	private String atCon;//명소 내용
-	private String imgName;//이미지명
-	private Integer a_keyNum;//명소 테이블 키워드 번호
-	private Integer k_keyNum;//키워드 테이블 키워드 번호
-	private String keyName;//키워드명
+	}
+	private Integer atNum;
+	private String atName;
+	private String atCon;
+	private String imgName;
+	private Integer a_keyNum;
+	private Integer k_keyNum;
+	private String keyName;
 	
 	
 	public Integer getAtNum() {
@@ -94,7 +93,7 @@ public class Product implements Serializable{
 	}
 	public void setKeyName(String keyName) {
 		this.keyName = keyName;
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
+
 	}
 	public String getName() {
 		return name;

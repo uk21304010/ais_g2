@@ -13,7 +13,7 @@ public class CreateDetailCommand extends AbstractCommand{
 		RequestContext reqc=getRequestContext();
 		String[]combos=reqc.getParameter("COMBO");
 		String combo = combos[0];
-		System.out.println("ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì’l‚Í"+combo);
+		System.out.println("ã‚³ãƒ³ãƒœãƒœãƒƒã‚¯ã‚¹ã®å€¤ã¯"+combo);
 		String[]names=reqc.getParameter("NAME");
 		String name = names[0];
 		String[] cons=reqc.getParameter("CON");
@@ -28,16 +28,11 @@ public class CreateDetailCommand extends AbstractCommand{
 		p.setPrice(img);
 
 		ModifyDao md = new ModifyDao();
-<<<<<<< HEAD
+
 
 		int anum= md.getANum();  
 		int knum= md.getNumber(combo);
 		md.setDetail(p,anum,knum);
-=======
-		String s = "ã•ãã‚‰";
-
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
-		
 		resc.setTarget("start");
 		return resc;
 	}

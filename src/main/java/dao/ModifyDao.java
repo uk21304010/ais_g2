@@ -9,12 +9,13 @@ import java.sql.SQLException;
 import dto.Product;
 
 public class ModifyDao{
-	final private String driver = "oracle.jdbc.OracleDriver";
-	final private String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
+	private static final String LOCAL = "jdbc:oracle:thin:@127.0.0.1:1521/xe";
+	private static final String USER = "hr";
+	private static final String PASS = "hr";
+	private Connection con = null;
+	private PreparedStatement st = null;
 	private ResultSet rs = null;
-<<<<<<< HEAD
+	
 	String s;
 	public int getNumber(String s) {
 		String sql = "Select KEYWORD_NUM from KEYWORD_TBL where KEYWORD_NAME = ?";
@@ -97,31 +98,30 @@ public class ModifyDao{
 			con.commit();
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
-=======
-	
+		}
+	}
 	public boolean deleteAttraction(int atNum) {
 		String delete = "DELETE FROM ATTRACTION_TBL "
 				+ "WHERE ATTRACTION_NUM = ? ";
 		//Product pd = null;
 		boolean result = false;
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, "hr","hr");
-			pstmt = conn.prepareStatement(delete);
-			pstmt.setInt(1, atNum);
-			pstmt.executeUpdate();
-			conn.commit();
+			Class.forName("oracle.jdbc.OracleDriver");
+			con = DriverManager.getConnection(LOCAL,USER,PASS);
+			st = con.prepareStatement(delete);
+			st.setInt(1, atNum);
+			st.executeUpdate();
+			con.commit();
 			result = true;
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-			conn.close(); pstmt.close();
+			con.close(); st.close();
 			}catch(Exception e) {}
 		}
-<<<<<<< HEAD
+		return result;
 	}
 	public int getANum() {
 		String sql = "Select max(attraction_num) from ATTRACTION_TBL";
@@ -194,10 +194,6 @@ public class ModifyDao{
 			}
 		}
 		return p;		
-=======
-		
-		return result;
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
 	}
 }
 	
