@@ -1,42 +1,58 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import dto.Product;
 
 public class ListInfoDao{
-	private Connection cn = null;
-	private PreparedStatement st = null;
+	final private String driver = "oracle.jdbc.OracleDriver";
+	final private String url = "jdbc:oracle:thin:@//localhost:1521/xe";
+	private Connection conn = null;
+	private PreparedStatement pstmt = null;
+	private ResultSet rs = null;
+	
 
-	public void setFavorite(String productId, int userId) {
-		try{
-			cn = ConnectionManager.getInstance().getConnection();
-			String sql = "INSERT INTO `favorite_table` VALUES (?,?);";
-			st = cn.prepareStatement(sql);
-
-			st.setInt(1, userId);
-			st.setInt(2, Integer.parseInt(productId));
-
-            int result = st.executeUpdate();
-
-			ConnectionManager.getInstance().commit();
-
-		}catch(SQLException e) {
-			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
-		}catch(Exception e) {
-			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
-	}finally {
-			if(st != null) {
-				try {
-					st.close();
+	public ArrayList<Product> AttractionList(Integer keyNum){
+		String select = "SELECT AT.ATTRACTION_NAME, AT.IMG_NAME, KT.KEYWORD_NAME "
+				+ "FROM ATTRACTION_TBL AT, KEYWORD_TBL KT "
+				+ "WHERE AT.KEYWORD_NUM = KT.KEYWORD_NUM "
+				+ "AND KT.KEYWORD_NUM = ?";
+			ArrayList<Product> list = new ArrayList<Product>();
+			Product pd = null;
+			try {
+				System.out.println(keyNum);
+				Class.forName(driver);
+				conn = DriverManager.getConnection(url,"hr","hr");
+				pstmt = conn.prepareStatement(select);
+				pstmt.setInt(1, keyNum);
+				System.out.println(pstmt);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					pd = new Product();
+					pd.setAtName(rs.getString(1));
+					pd.setImgName(rs.getString(2));
+					pd.setKeyName(rs.getString(3));
+					list.add(pd);
+					for(int i = 0; i<list.size(); i++) {
+						System.out.println(list.get(i));
+					}
 				}
-				catch(SQLException e) {
-					e.printStackTrace();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					pstmt.close();
+					conn.close();
+				}catch(Exception e) {
+					
 				}
 			}
-		}
+		return list;
 	}
 }
 	

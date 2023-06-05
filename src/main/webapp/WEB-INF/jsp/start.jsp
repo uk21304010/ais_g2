@@ -4,8 +4,6 @@
 <head><title>スタート画面</title></head>
 <body>
 	<h1>スタート画面</h1>
-	<p><a href="input?NUM=100">商品登録画面へ</a></p>
-	<p><a href="modify?NUM=3">商品確認画面へ</a></p>
-	<p><a href="">商品確認画面へ</a></p>
+	<p><a href="list?keyNum=102">商品確認画面へ</a></p>
 	</body>
 </html>

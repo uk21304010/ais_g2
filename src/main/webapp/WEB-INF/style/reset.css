@@ -1,0 +1,15 @@
+@charset "UTF-8";
+* {box-sizing:border-box;}
+html,body,select {font-family: 'Noto Sans KR', sans-serif;}
+html,body,header,section,nav,article,aside,footer,div,p,em,strong,span,a,h1,h2,h3,h4,h5,h6,img,ul,ol,li,dl,dt,dd,table,tr,td,th,thead,tbody,tfooter,form,fieldset,legend,input,buttom,select,option,textarea {
+    margin:0; padding:0; line-height:1.0;
+    font-size:1.0em; font-style:normal; font-weight:normal;
+    
+}
+
+button {cursor:pointer; border:0; background:none;}
+table,tr,td,th {border-collapse:collapse;}
+a{text-decoration:none; color:#000;}
+ul,ol,li {list-style:none;}
+.skip {display:none;}
+fieldset {border:none;}
