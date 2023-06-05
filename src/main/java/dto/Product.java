@@ -6,7 +6,44 @@ public class Product implements Serializable{
 	private String name;
 	private String price;
 	private String pid;
+	private String con;
+	private String img;
+	private int anum;
+	private String id;
+	private String pass;
 	
+<<<<<<< HEAD
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public int getAnum() {
+		return anum;
+	}
+	public void setAnum(int anum) {
+		this.anum = anum;
+	}
+	public String getCon() {
+		return con;
+	}
+	public void setCon(String con) {
+		this.con = con;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+=======
 	private Integer atNum;//명소 번호
 	private String atName;//명소 이름
 	private String atCon;//명소 내용
@@ -57,6 +94,7 @@ public class Product implements Serializable{
 	}
 	public void setKeyName(String keyName) {
 		this.keyName = keyName;
+>>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
 	}
 	public String getName() {
 		return name;

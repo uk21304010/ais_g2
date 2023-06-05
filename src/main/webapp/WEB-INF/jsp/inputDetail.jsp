@@ -8,13 +8,12 @@
 
 <title>Sakura-スレッド一覧</title>
 </head>
-<header>
-
-</header>
+<header> </header>
 <body>
 	<h1>Sakuraスレッド一覧</h1>
-
-	<%
+	<form method='get' action='create' enctype="multipart/form-data">
+		<select name='COMBO'>
+			<%
 	PreparedStatement ps = null;
 	Connection cn = null;
 
@@ -30,20 +29,22 @@
 		String printid = "null";
 		String printdate;
 		%>
-		<div class="listtable">
-		<p class="listtitle"><%=result.getString("KEYWORD_NAME")%></p>
-		</div>
-		<%
+			<option><%=result.getString("KEYWORD_NAME")%></option>
+			
+			<%
 		}
 		%>
-			<h1>送信テスト</h1>
-			<form method='get' action='create'>
-	商品番号<input type='text' name='NAME'><br>
-	商品名<input type='text' name='CON'><br>
-	価格<input type='text' name='IMG'><br>
-	<input type='submit' value='登録'>
+		</select>
+
+		<h1>送信テスト</h1>
+
+		商品番号<input type='text' name='NAME'><br> 
+		商品名<input type='text' name='CON'><br> 
+		価格<input type='text'name='IMG'><br> 
+		<input type='file' name='IMGS'>
+		<input type='submit' value='登録'>
 	</form>
-	
+
 	<a href="#" class="gotop">トップ</a>
 </body>
 </html>

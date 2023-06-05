@@ -1,48 +1,49 @@
 package command;
 
-
+import dao.DbDummy;
 import dao.ModifyDao;
 import dto.Product;
 import servlet.RequestContext;
 import servlet.ResponseContext;
-
 //import dao.AbstractDaoFactory;
 //import dao.ProductsDao;
-public class CreateDetailCommand extends AbstractCommand{
+
+public class UpdateDetailCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
+		ModifyDao md = new ModifyDao();
+		Product p = new Product();
+		String[]anums=reqc.getParameter("ANUM");
+		String anum = anums[0];
+		System.out.println("ANUM‚Ì’l"+anum);
 		String[]combos=reqc.getParameter("COMBO");
 		String combo = combos[0];
-		System.out.println("ƒRƒ“ƒ{ƒ{ƒbƒNƒX‚Ì’l‚Í"+combo);
+		System.out.println("COMBO‚Ì’l"+combo);
+		
 		String[]names=reqc.getParameter("NAME");
 		String name = names[0];
+		
 		String[] cons=reqc.getParameter("CON");
 		String con= cons[0];
 
 		String[] imgs=reqc.getParameter("IMG");
 		String img= imgs[0];
-		
-		Product p = new Product();
+
 		p.setPid(name);
 		p.setName(con);
 		p.setPrice(img);
 
-		ModifyDao md = new ModifyDao();
-<<<<<<< HEAD
-
-		int anum= md.getANum();  
+ 
 		int knum= md.getNumber(combo);
-		md.setDetail(p,anum,knum);
-=======
-		String s = "ã•ãã‚‰";
+		md.updateDetail(p,Integer.parseInt(anum),knum);
+		System.out.println("cm");
+		/*AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
+		ProductsDao dao=factory.getProductsDao();
 
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
-		
+		List products=dao.getAllProducts();
+		*/
+		//s=md.getNumber();
 		resc.setTarget("start");
 		return resc;
 	}
 }
-		//AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
-		//ProductsDao dao=factory.getProductsDao();
-		//dao.addProduct(p);
-		//resc.setResult(dao.getAllProducts());

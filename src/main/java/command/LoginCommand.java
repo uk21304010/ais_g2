@@ -1,11 +1,12 @@
 package command;
 
+import servlet.RequestContext;
 import servlet.ResponseContext;
 
-public class InputCommand extends AbstractCommand{
+public class LoginCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		
-		resc.setTarget("inputDetail");
+		resc.setTarget("login");
 		return resc;
 	}
 }
