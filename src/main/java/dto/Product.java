@@ -3,6 +3,10 @@ package dto;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
 	private String thumbnailScreen;
 	
 	private String titlePlace;
@@ -13,20 +17,30 @@ public class Product implements Serializable{
 	
 	private String titleSub;
 
+<<<<<<< HEAD
 	public String getThumbnailScreen() {
 		return thumbnailScreen;
 	}
+=======
+	
+>>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
 	private String name;
 	private String con;
 	private String img;
 	private int anum;
 	private String id;
+	public void setName(String name) {
+		this.name = name;
+	}
 	private String pass;
 	 
 	private String thumbnail;
 	
 	public String getThumbnail() {
 		return thumbnail;
+	}
+	public String getThumbnailScreen() {
+		return thumbnailScreen;
 	}
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
@@ -115,7 +129,10 @@ public class Product implements Serializable{
 	}
 	public String getName() {
 		return name;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
 	}
 
 	public void setThumbnailScreen(String thumbnailScreen) {
@@ -153,6 +170,10 @@ public class Product implements Serializable{
 	public void setTitleSub(String titleSub) {
 		this.titleSub = titleSub;
 	}
+<<<<<<< HEAD
 	
 	
+=======
+
+>>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
 }
