@@ -13,16 +13,18 @@ import command.CommandFactory;
 public class WebApplicationController implements ApplicationController{
     public RequestContext getRequest(Object request){
         RequestContext reqc=new WebRequestContext();
-        reqc.setRequest(request);//RequestContext縺ｫ迴ｾ蝨ｨ縺ｮ繝ｪ繧ｯ繧ｨ繧ｹ繝�(request)諠�蝣ｱ繧定ｨｭ螳�
+        reqc.setRequest(request);//
         return reqc;
     }
-    public ResponseContext handleRequest(RequestContext req){
-        AbstractCommand command = CommandFactory.getCommand(req);//繝ｪ繧ｯ繧ｨ繧ｹ繝�(req)縺ｧclassName繧呈歓蜃ｺ縺励※蜃ｦ逅�class繧定ｭ伜挨
+    public ResponseContext handleRequest(RequestContext req){// 여기가 2번째 
+   //우리가 처리를 해야할 Command를 찾아서, 처리를 한다. 
+        AbstractCommand command = CommandFactory.getCommand(req);//얘는 처리해야할 Command들의 이름을 찾는 것.
         command.init(req);//
-        ResponseContext resc = command.execute(new WebResponseContext());//蜃ｦ逅�縺励※邨先棡繧坦esponse縺ｫ險ｭ螳�
+        ResponseContext resc = command.execute(new WebResponseContext());//이름을 찾아서 처리해야 할 Command를 찾아서
+        //resc에 결과를 담아서 되돌려준다. FrontServlet으로 ..
         return resc;
     }
-    public void handleResponse(RequestContext reqc, ResponseContext resc){
+    public void handleResponse(RequestContext reqc, ResponseContext resc){ //Command(DAO)에서 설정한 값을 여기로 불러서재설정
         HttpServletRequest req= (HttpServletRequest) reqc.getRequest();//繝ｪ繧ｯ繧ｨ繧ｹ繝域ュ蝣ｱ
         HttpServletResponse res= (HttpServletResponse) resc.getResponse();//繝ｬ繧ｹ繝昴Φ繧ｹ諠�蝣ｱ
 
