@@ -1,54 +1,100 @@
 package servlet;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.FileUploadException;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload.servlet.ServletRequestContext;
 
 import dto.Product;
-
+@MultipartConfig
 public class WebRequestContext implements RequestContext{
-    private Map parameters;
+	private Map parameters;
+	private Map<String, String[]> postParameters;
     private HttpServletRequest request;
+    private String filePath;
+    private String fileName; 
+    private HttpServletRequest imgRequest;
     public WebRequestContext(){}
 
-    public void setRequest(Object req){
-        request=(HttpServletRequest) req;//陞溽判辟嗷equest邵ｺ�ｽｫ郢晢ｽｪ郢ｧ�ｽｯ郢ｧ�ｽｨ郢ｧ�ｽｹ郢晏沺繝･陜｣�ｽｱ髫ｪ�ｽｭ陞ｳ�ｿｽ
-        parameters=request.getParameterMap();//陞溽判辟嗔arameters邵ｺ�ｽｫrequest邵ｺ�ｽｮ郢昜ｻ｣ﾎ帷ｹ晢ｽ｡郢晢ｽｼ郢ｧ�ｽｿ郢ｧ遏･apping邵ｺ蜉ｱ窶ｻ髫ｪ�ｽｭ陞ｳ�ｿｽ
-    }
     public String getCommandPath(){
-        //陞溽判辟嗷equest邵ｺ�ｽｫ邵ｺ繧��ｽ狗ｹ晢ｽｪ郢ｧ�ｽｯ郢ｧ�ｽｨ郢ｧ�ｽｹ郢晏現�ｿｽ�ｽｮServletPath郢ｧ蜻域ｭ楢怎�ｽｺ
+        //螟画焚request縺ｫ縺ゅｋ繝ｪ繧ｯ繧ｨ繧ｹ繝医�ｮServletPath繧呈歓蜃ｺ
         String servletPath=request.getServletPath();
         String commandPath=servletPath.substring(1);
         return commandPath;
     }
+    public void setRequest(Object req){//1. 여기가  파라미터를 보내면 받는 곳
+    	request = (HttpServletRequest)req;
+
+		try {
+			imgRequest = new BufferedServletRequestWrapper((HttpServletRequest)req);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	parameters = request.getParameterMap();
+	postParameters = getPostParameter();
+    }
+    public Map<String, String[]> getPostParameter() {
+    	Map<String, String[]> map = new HashMap();
+    	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
+		sf.setHeaderEncoding("UTF-8");
+
+		List<FileItem> items;
+		try {
+			InputStream inputStream = imgRequest.getInputStream();
+			items = sf.parseRequest(new ServletRequestContext(imgRequest));
+
+			for (FileItem item : items) {
+			    if (item.isFormField()) {
+			        String name = item.getFieldName();
+			        String[] value = {item.getString("UTF-8")};
+			        map.put(name, value);
+			    }
+			}
+		} catch (FileUploadException e) {
+			System.out.println("post");
+		}catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		return map;
+	}
     public String[] getParameter(String key){
         return (String[])parameters.get(key);
     }
+
     public Object getRequest(){
         return request;
-    } 
-    public boolean uploadFile(String path) {
+    }
+    public String[] postParameter(String key) {
+    	return (String[])postParameters.get(key);
+    }
+
+    public boolean uploadFile() {
+    	System.out.println("upload");
 		Boolean flag = false;
     	//String imgPath = request.getRealPath("images");
     	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-    	String paths = "/home/ec2-user/Bloom/images" + path;
+    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\image";
     	try {
-            List<FileItem> files =sf.parseRequest(imgRequest);
+    		List<FileItem> files =sf.parseRequest(imgRequest);
+            System.out.println(files);
              for (FileItem fileItem : files) {
             	 if(!fileItem.isFormField()) {
-            		 String fileName = fileItem.getName();
+            		 String fileName = new File(fileItem.getName()).getName();
             		 setFileName(fileName);
 
-            		 System.out.println("�t�@�C�����F" + fileName);
-            		 System.out.println("�ۑ���p�X�F" + paths);
+            		 System.out.println("filename" + fileName);
+            		 System.out.println("filepath" + paths);
 
             		 String filePath = paths + File.separator + fileName;
             		 setFilePath(filePath);
@@ -58,7 +104,7 @@ public class WebRequestContext implements RequestContext{
             		 if(file.exists()) {
 
             		 }else {
-
+            			 System.out.println("?");
             			 fileItem.write(file);
             			 flag = true;
             		 }
@@ -69,9 +115,20 @@ public class WebRequestContext implements RequestContext{
          } catch (Exception ex) {
              ex.printStackTrace();
          }
+    	System.out.println(flag);
     	 return flag;
     }
-    public void setSessionParameter(String key, Product value) {
+    private void setFileName(String fileName) {
+    	this.fileName = fileName;
+		
+	}
+    public String getFileName() {
+		return fileName;
+	}
+    public void setFilePath(String path) {
+    	filePath = path;
+    }
+	public void setSessionParameter(String key, Product value) {
 		Map parameter = new HashMap();
 		parameter.put(key, value);
 		request.getSession().setAttribute("session", parameter);

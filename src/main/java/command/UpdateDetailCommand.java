@@ -1,6 +1,5 @@
 package command;
 
-import dao.DbDummy;
 import dao.ModifyDao;
 import dto.Product;
 import servlet.RequestContext;
@@ -13,29 +12,29 @@ public class UpdateDetailCommand extends AbstractCommand{
 		RequestContext reqc=getRequestContext();
 		ModifyDao md = new ModifyDao();
 		Product p = new Product();
-		String[]anums=reqc.getParameter("ANUM");
+		String[]anums=reqc.postParameter("ANUM");
 		String anum = anums[0];
 		System.out.println("ANUM‚Ì’l"+anum);
-		String[]combos=reqc.getParameter("COMBO");
+		String[]combos=reqc.postParameter("COMBO");
 		String combo = combos[0];
 		System.out.println("COMBO‚Ì’l"+combo);
 		
-		String[]names=reqc.getParameter("NAME");
+		String[]names=reqc.postParameter("NAME");
 		String name = names[0];
 		
-		String[] cons=reqc.getParameter("CON");
+		String[] cons=reqc.postParameter("CON");
 		String con= cons[0];
-
-		String[] imgs=reqc.getParameter("IMG");
-		String img= imgs[0];
-
-		p.setPid(name);
-		p.setName(con);
-		p.setPrice(img);
-
+		String fileName = null;
+			if(reqc.uploadFile()) {
+				System.out.println("Š®—¹");
+				fileName = reqc.getFileName();
+				p.setThumbnail(fileName);
+			}
+			
+		p.setName(name);
+		p.setCon(con);
  
-		int knum= md.getNumber(combo);
-		md.updateDetail(p,Integer.parseInt(anum),knum);
+		md.updateDetail(p,Integer.parseInt(anum),Integer.parseInt(combo));
 		System.out.println("cm");
 		/*AbstractDaoFactory factory=AbstractDaoFactory.getFactory();
 		ProductsDao dao=factory.getProductsDao();
@@ -45,5 +44,5 @@ public class UpdateDetailCommand extends AbstractCommand{
 		//s=md.getNumber();
 		resc.setTarget("start");
 		return resc;
-	}
+		}
 }

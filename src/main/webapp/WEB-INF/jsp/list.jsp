@@ -38,7 +38,7 @@
 								href="delete?ATNUM=5"">削除</a>
 						</div>
 					</li>
-				</c:forEach>
+				</c:forEach> 
 				<%
 				for (Product l : list) {
 				%>
@@ -63,7 +63,7 @@
 	</section>
 	<script>
 		function atRegist() {
-			location.href = "index.jsp";
+			location.href = "input";
 		}
 	</script>
 </body>

@@ -12,7 +12,7 @@ import servlet.ResponseContext;
 public class ListCommand extends AbstractCommand {
 public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
-		//명소 이름, 이미지, 키워드명
+
 		
 		String [] keyNumse = reqc.getParameter("keyNum");
 		Integer keyNum = Integer.parseInt(keyNumse[0]);

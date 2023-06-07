@@ -9,13 +9,14 @@ import java.sql.SQLException;
 import dto.Product;
 
 public class ModifyDao{
-	final private String driver = "oracle.jdbc.OracleDriver";
-	final private String url = "jdbc:oracle:thin:@//localhost:1521/xe";
-	private Connection conn = null;
-	private PreparedStatement pstmt = null;
+	private static final String LOCAL = "jdbc:oracle:thin:@127.0.0.1:1521/xe";
+	private static final String USER = "hr";
+	private static final String PASS = "hr";
+	private Connection con = null;
+	private PreparedStatement st = null;
 	private ResultSet rs = null;
-<<<<<<< HEAD
-	String s;
+	
+	//String s;
 	public int getNumber(String s) {
 		String sql = "Select KEYWORD_NUM from KEYWORD_TBL where KEYWORD_NAME = ?";
 		int i = 0;
@@ -35,10 +36,9 @@ public class ModifyDao{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
+
 		}catch(Exception e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 	}finally {
 			if(st != null) {
 				try {
@@ -55,22 +55,33 @@ public class ModifyDao{
 		try{
 			con = ConnectionManager.getInstance().getConnection();
 			String sql = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, IMG_NAME =?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
-			st = con.prepareStatement(sql);
+			String sql2 = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
+			if(p.getThumbnail()==null) {
+			st = con.prepareStatement(sql2);
 			
-			st.setString(1, p.getPid());
-			st.setString(2, p.getName());
-			st.setString(3, p.getPrice());
-			st.setInt(4, knum);
-			st.setInt(5, anum);
+			st.setString(1, p.getName());
+			st.setString(2, p.getCon());
+			st.setInt(3, knum);
+			st.setInt(4, anum);
 			
 			st.executeUpdate();
 			con.commit();
+			}else {
+				st = con.prepareStatement(sql);
+				
+				st.setString(1, p.getName());
+				st.setString(2, p.getCon());
+				st.setString(3, p.getThumbnail());
+				st.setInt(4, knum);
+				st.setInt(5, anum);
+				
+				st.executeUpdate();
+				con.commit();
+			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 		}catch(Exception e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 	}finally {
 			if(st != null) {
 				try {
@@ -88,40 +99,39 @@ public class ModifyDao{
 			String sql = "INSERT INTO ATTRACTION_TBL VALUES (?,?,?,?,?)";
 			st = con.prepareStatement(sql);
 			st.setInt(1, anum);
-			st.setString(2, p.getPid());
-			st.setString(3, p.getName());
-			st.setString(4, p.getPrice());
+			st.setString(2, p.getName());
+			st.setString(3, p.getCon());
+			st.setString(4, p.getThumbnail());
 			st.setInt(5, knum);
 			
 			st.executeUpdate();
 			con.commit();
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
-=======
-	
+		}
+	}
 	public boolean deleteAttraction(int atNum) {
 		String delete = "DELETE FROM ATTRACTION_TBL "
 				+ "WHERE ATTRACTION_NUM = ? ";
 		//Product pd = null;
 		boolean result = false;
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url, "hr","hr");
-			pstmt = conn.prepareStatement(delete);
-			pstmt.setInt(1, atNum);
-			pstmt.executeUpdate();
-			conn.commit();
+			Class.forName("oracle.jdbc.OracleDriver");
+			con = DriverManager.getConnection(LOCAL,USER,PASS);
+			st = con.prepareStatement(delete);
+			st.setInt(1, atNum);
+			st.executeUpdate();
+			con.commit();
 			result = true;
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			try {
-			conn.close(); pstmt.close();
+			con.close(); st.close();
 			}catch(Exception e) {}
 		}
-<<<<<<< HEAD
+		return result;
 	}
 	public int getANum() {
 		String sql = "Select max(attraction_num) from ATTRACTION_TBL";
@@ -194,10 +204,6 @@ public class ModifyDao{
 			}
 		}
 		return p;		
-=======
-		
-		return result;
->>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
 	}
 }
 	
