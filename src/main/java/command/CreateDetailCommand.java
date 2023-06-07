@@ -40,8 +40,7 @@ public class CreateDetailCommand extends AbstractCommand{
 		ModifyDao md = new ModifyDao();
 
 		int anum= md.getANum();  
-		int knum= md.getNumber(combo);
-		md.setDetail(p,anum,knum);
+		md.setDetail(p,anum,Integer.parseInt(combo));
 		resc.setTarget("start");
 		return resc;
 	}

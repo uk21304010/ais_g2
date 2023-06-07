@@ -14,7 +14,7 @@
 </header>
 <body>
 	<h1>Sakuraスレッド一覧</h1>
-				<form method='get' action='updatedetail'>
+				<form method='post' action='updatedetail' enctype="multipart/form-data">
   <select name='COMBO' >
 	<%
 	PreparedStatement ps = null;
@@ -25,24 +25,24 @@
 	//Oracleに接続する
 	cn = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521/xe", "hr", "hr");
 
-	String select = ("Select KEYWORD_NAME from KEYWORD_TBL");
+	String select = ("Select KEYWORD_NUM,KEYWORD_NAME from KEYWORD_TBL");
 	Statement st = cn.createStatement();
 	ResultSet result = st.executeQuery(select);
 	while (result.next()) {
 		String printid = "null";
 		String printdate;
 		%>
-		<option><%=result.getString("KEYWORD_NAME")%></option>
-		
+		<option value=<%=result.getString("KEYWORD_NUM")%>>
+		<%=result.getString("KEYWORD_NAME")%></option>
 		<%
 		}
 		%>
 		</select>
 			<h1>送信テスト</h1>
-			<input type ='hidden' value= "${result.anum}" name='ANUM'><br>
-	商品番号<input type='text' value=" ${result.name}" name='NAME'><br>
-	商品名<input type='text' value=" ${result.con}"name='CON'><br>
-	価格<input type='text' value="${result.img}" name='IMG'><br>
+			<input type ='hidden' value="${result.anum}" name='ANUM'multiple><br>
+	商品番号<input type='text' value="${result.name}" name='NAME'multiple><br>
+	商品名<input type='text' value="${result.con}"name='CON'multiple><br>
+	価格<input type='file' name='IMG'multiple><br>
 	<input type='submit' value='登録'>
 	</form>
 </body>

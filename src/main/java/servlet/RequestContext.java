@@ -1,5 +1,7 @@
 package servlet;
 
+import java.util.Map;
+
 import dto.Product;
 
 public interface RequestContext {
@@ -11,5 +13,5 @@ public interface RequestContext {
 	public void setSessionParameter(String string, Product p);
 	public boolean uploadFile();
 	public String getFileName();
-
+	public Map<String, String[]> getPostParameter();
 }

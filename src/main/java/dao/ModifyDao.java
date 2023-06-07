@@ -16,7 +16,7 @@ public class ModifyDao{
 	private PreparedStatement st = null;
 	private ResultSet rs = null;
 	
-	String s;
+	//String s;
 	public int getNumber(String s) {
 		String sql = "Select KEYWORD_NUM from KEYWORD_TBL where KEYWORD_NAME = ?";
 		int i = 0;
@@ -36,10 +36,9 @@ public class ModifyDao{
 
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
+
 		}catch(Exception e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 	}finally {
 			if(st != null) {
 				try {
@@ -56,22 +55,33 @@ public class ModifyDao{
 		try{
 			con = ConnectionManager.getInstance().getConnection();
 			String sql = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, IMG_NAME =?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
-			st = con.prepareStatement(sql);
+			String sql2 = "update ATTRACTION_TBL set ATTRACTION_NAME = ?,ATTRACTION_CON = ?, KEYWORD_NUM=? where ATTRACTION_NUM=? ";
+			if(p.getThumbnail()==null) {
+			st = con.prepareStatement(sql2);
 			
 			st.setString(1, p.getName());
 			st.setString(2, p.getCon());
-			st.setString(3, p.getThumbnail());
-			st.setInt(4, knum);
-			st.setInt(5, anum);
+			st.setInt(3, knum);
+			st.setInt(4, anum);
 			
 			st.executeUpdate();
 			con.commit();
+			}else {
+				st = con.prepareStatement(sql);
+				
+				st.setString(1, p.getName());
+				st.setString(2, p.getCon());
+				st.setString(3, p.getThumbnail());
+				st.setInt(4, knum);
+				st.setInt(5, anum);
+				
+				st.executeUpdate();
+				con.commit();
+			}
 		}catch(SQLException e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 		}catch(Exception e) {
 			e.printStackTrace();
-			ConnectionManager.getInstance().rollback();
 	}finally {
 			if(st != null) {
 				try {
