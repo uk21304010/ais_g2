@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.Product;
+import src.main.java.dto.Product;
 
 public class AccountDao{
 
