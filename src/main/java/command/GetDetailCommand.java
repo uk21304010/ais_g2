@@ -1,8 +1,8 @@
 package command;
 
 import dao.ContentInfoDao;
-import servlet.RequestContext;
-import servlet.ResponseContext;
+import src.main.java.servlet.RequestContext;
+import src.main.java.servlet.ResponseContext;
 
 public class GetDetailCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){

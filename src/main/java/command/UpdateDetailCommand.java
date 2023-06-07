@@ -15,10 +15,10 @@ public class UpdateDetailCommand extends AbstractCommand{
 		Product p = new Product();
 		String[]anums=reqc.postParameter("ANUM");
 		String anum = anums[0];
-		System.out.println("ANUM‚Ì’l"+anum);
+		System.out.println("ANUMï¿½Ì’l"+anum);
 		String[]combos=reqc.postParameter("COMBO");
 		String combo = combos[0];
-		System.out.println("COMBO‚Ì’l"+combo);
+		System.out.println("COMBOï¿½Ì’l"+combo);
 		
 		String[]names=reqc.postParameter("NAME");
 		String name = names[0];
@@ -27,7 +27,7 @@ public class UpdateDetailCommand extends AbstractCommand{
 		String con= cons[0];
 		String fileName = null;
 			if(reqc.uploadFile()) {
-				System.out.println("Š®—¹");
+				System.out.println("ï¿½ï¿½ï¿½ï¿½");
 				fileName = reqc.getFileName();
 				p.setThumbnail(fileName);
 			}

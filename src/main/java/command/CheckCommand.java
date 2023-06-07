@@ -22,10 +22,10 @@ public class CheckCommand extends AbstractCommand{
 		
 		boolean flag = ad.checkId(pass, id);
 		System.out.println(flag);
-			if(flag == false) {//ƒ†[ƒU[ƒtƒ‰ƒO‚ª0‚Ìê‡
-				resc.setResult("–³Œø‚ÈƒAƒJƒEƒ“ƒg‚Å‚·B");
+			if(flag == false) {//ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½0ï¿½Ìê‡
+				resc.setResult("ï¿½ï¿½ï¿½ï¿½ï¿½ÈƒAï¿½Jï¿½Eï¿½ï¿½ï¿½gï¿½Å‚ï¿½ï¿½B");
 				resc.setTarget("login");
-			}else {//ƒ†[ƒU[ƒtƒ‰ƒO‚ª1‚Ìê‡
+			}else {//ï¿½ï¿½ï¿½[ï¿½Uï¿½[ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½1ï¿½Ìê‡
 				Product p = ad.getUser(pass, id);
 				reqc.setSessionParameter("user", p);
 				resc.setTarget("view");
