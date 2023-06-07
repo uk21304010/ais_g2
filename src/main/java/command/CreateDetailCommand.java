@@ -1,6 +1,6 @@
 package command;
 
-import dao.DbDummy;
+
 import dao.ModifyDao;
 import dto.Product;
 import servlet.RequestContext;
@@ -11,25 +11,36 @@ import servlet.ResponseContext;
 public class CreateDetailCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc=getRequestContext();
-
-		String[]names=reqc.getParameter("NAME");
+		String[]combos=reqc.postParameter("COMBO");
+		String combo = combos[0];
+		
+		System.out.println("コンボボックスの値は"+combo);
+		String[]names=reqc.postParameter("NAME");
 		String name = names[0];
-		System.out.println(name);
-		String[] cons=reqc.getParameter("CON");
+		String[] cons=reqc.postParameter("CON");
 		String con= cons[0];
 
-		String[] imgs=reqc.getParameter("IMG");
-		String img= imgs[0];
-		
 		Product p = new Product();
-		p.setPid(name);
-		p.setName(con);
-		p.setPrice(img);
+		String fileName = null;
+		if(reqc.uploadFile()) {
+			System.out.println("完了");
+			fileName = reqc.getFileName();
+			p.setThumbnail(fileName);
+		}else {
+			System.out.println("エラー");
+
+			resc.setResult("ファイルアップロードエラー");
+			resc.setTarget("inputDetail");
+
+	        return resc;
+		}
+		p.setCon(con);
+		p.setName(name);
 
 		ModifyDao md = new ModifyDao();
-		String s = "さくら";
 
-		
+		int anum= md.getANum();  
+		md.setDetail(p,anum,Integer.parseInt(combo));
 		resc.setTarget("start");
 		return resc;
 	}

@@ -4,16 +4,56 @@ import java.io.Serializable;
 
 public class Product implements Serializable{
 	private String name;
-	private String price;
-	private String pid;
+	private String con;
+	private String img;
+	private int anum;
+	private String id;
+	private String pass;
+	private String thumbnail;
 	
-	private Integer atNum;//명소 번호
-	private String atName;//명소 이름
-	private String atCon;//명소 내용
-	private String imgName;//이미지명
-	private Integer a_keyNum;//명소 테이블 키워드 번호
-	private Integer k_keyNum;//키워드 테이블 키워드 번호
-	private String keyName;//키워드명
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public int getAnum() {
+		return anum;
+	}
+	public void setAnum(int anum) {
+		this.anum = anum;
+	}
+	public String getCon() {
+		return con;
+	}
+	public void setCon(String con) {
+		this.con = con;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	private Integer atNum;
+	private String atName;
+	private String atCon;
+	private String imgName;
+	private Integer a_keyNum;
+	private Integer k_keyNum;
+	private String keyName;
 	
 	
 	public Integer getAtNum() {
@@ -57,6 +97,7 @@ public class Product implements Serializable{
 	}
 	public void setKeyName(String keyName) {
 		this.keyName = keyName;
+
 	}
 	public String getName() {
 		return name;
@@ -64,16 +105,5 @@ public class Product implements Serializable{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	public String getPid() {
-		return pid;
-	}
-	public void setPid(String pid) {
-		this.pid = pid;
-	}
+
 }

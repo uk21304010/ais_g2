@@ -1,7 +1,12 @@
 /command/
 <<<<<<< HEAD
+/servlet/
+/dao/
+=======
+<<<<<<< HEAD
 =======
 /dao/
 /servlet/
 /dto/
 >>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
+>>>>>>> 95a8a3d10af4e580d7b3757042fa899edf9573ff
