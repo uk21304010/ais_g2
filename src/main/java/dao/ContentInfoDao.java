@@ -15,6 +15,23 @@ public class ContentInfoDao{
 	private String driver="oracle.jdbc.OracleDriver";
 	private String url="jdbc:oracle:thin:@//localhost:1521/xe";
 
+	public ArrayList<Product> showSub () {
+		String select = "";
+		
+		
+		ArrayList<Product> showSub = new ArrayList<Product>();
+	
+		try {
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close(); st.close(); cn.close();
+			}catch(Exception e) {}
+		}
+		return showSub;
+	}
 	public ArrayList<Product> showDetail(int num) {
 		String select = " select attraction_name,Attraction_Con,Img_Name "
 				+ " from Keyword_tbl kt, Attraction_tbl at "
@@ -48,4 +65,5 @@ public class ContentInfoDao{
 		}
 		return showDetail; //내가 쓸 처리가 있는 Command로 이게 이동 
 	}
+
 }
