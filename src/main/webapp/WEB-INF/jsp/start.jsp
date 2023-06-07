@@ -1,3 +1,28 @@
+<<<<<<< HEAD
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
+		pageEncoding="UTF-8"%>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Start</title>
+	</head>
+	<style>
+
+	}
+	</style>
+	<body>
+		<form method="post" action="detail">
+			<table border="1" align="center">
+				<tr>
+					<td><input type="text" name="NUM" value="" /><br /></td>
+					<td><input type="submit" value="Ï†úÏ∂ú" /></td>
+				</tr>
+			</table>
+
+	
+		</form>
+=======
 <%@ page pageEncoding="Windows-31J"
 	contentType="text/html;charset=Windows-31J" %>
 <html>
@@ -20,5 +45,6 @@ HEAD
 	<p><a href="list?keyNum=102">è§ïiämîFâÊñ Ç÷</a></p>
 >>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
 >>>>>>> 95a8a3d10af4e580d7b3757042fa899edf9573ff
+>>>>>>> 4bced9fd848c86090c9efd21461d30b5c54a2681
 	</body>
-</html>
+	</html>

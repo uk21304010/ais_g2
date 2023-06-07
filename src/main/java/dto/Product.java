@@ -3,6 +3,20 @@ package dto;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+<<<<<<< HEAD
+	private String thumbnailScreen;
+	
+	private String titlePlace;
+	
+	private String detailContent;
+	
+	private String subthumbScreen;
+	
+	private String titleSub;
+
+	public String getThumbnailScreen() {
+		return thumbnailScreen;
+=======
 	private String name;
 	private String con;
 	private String img;
@@ -101,9 +115,47 @@ public class Product implements Serializable{
 	}
 	public String getName() {
 		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
+>>>>>>> 4bced9fd848c86090c9efd21461d30b5c54a2681
 	}
 
+	public void setThumbnailScreen(String thumbnailScreen) {
+		this.thumbnailScreen = thumbnailScreen;
+	}
+
+<<<<<<< HEAD
+	public String getTitlePlace() {
+		return titlePlace;
+	}
+
+	public void setTitlePlace(String titlePlace) {
+		this.titlePlace = titlePlace;
+	}
+
+	public String getDetailContent() {
+		return detailContent;
+	}
+
+	public void setDetailContent(String detailContent) {
+		this.detailContent = detailContent;
+	}
+
+	public String getSubthumbScreen() {
+		return subthumbScreen;
+	}
+
+	public void setSubthumbScreen(String subthumbScreen) {
+		this.subthumbScreen = subthumbScreen;
+	}
+
+	public String getTitleSub() {
+		return titleSub;
+	}
+
+	public void setTitleSub(String titleSub) {
+		this.titleSub = titleSub;
+	}
+	
+	
+=======
+>>>>>>> 4bced9fd848c86090c9efd21461d30b5c54a2681
 }

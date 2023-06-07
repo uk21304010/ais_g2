@@ -7,13 +7,16 @@ import java.util.Properties;
 
 import servlet.RequestContext;
 
-public abstract class CommandFactory{
+public abstract class CommandFactory{ //처리는 커맨드에서 커맨드가 다오를 부른다.
 	public static AbstractCommand getCommand(RequestContext rc){
 		AbstractCommand command = null;
 		Properties prop = new Properties();
 		
 		try{
 				
+<<<<<<< HEAD
+			prop.load(new FileInputStream("C:\\Users\\AIS-N\\eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
+=======
 <<<<<<< HEAD
 
 			prop.load(new FileInputStream("C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
@@ -24,6 +27,7 @@ public abstract class CommandFactory{
 			prop.load(new FileInputStream("C:\\Eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
 >>>>>>> a9746dcdad974bc570ffe8d0277b74bab3a8345a
 >>>>>>> 95a8a3d10af4e580d7b3757042fa899edf9573ff
+>>>>>>> 4bced9fd848c86090c9efd21461d30b5c54a2681
 
 			String name = prop.getProperty(rc.getCommandPath());
 
