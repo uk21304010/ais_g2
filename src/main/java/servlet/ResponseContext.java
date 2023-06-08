@@ -7,4 +7,5 @@ public interface ResponseContext {
     public Object getResult();
     public void setResponse(Object obj);
     public Object getResponse();
+	public void setTargetCommand(String string);
 }

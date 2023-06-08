@@ -26,4 +26,9 @@ public class WebResponseContext implements ResponseContext{
     public void setResponse(Object obj){
         response=(HttpServletResponse)obj;
     }
+	@Override
+	public void setTargetCommand(String string) {
+		target = string;
+		
+	}
 }

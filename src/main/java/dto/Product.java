@@ -3,17 +3,75 @@ package dto;
 import java.io.Serializable;
 
 public class Product implements Serializable{
-	private String name;
-	private String price;
-	private String pid;
+
+	private String thumbnailScreen;
 	
-	private Integer atNum;//명소 번호
-	private String atName;//명소 이름
-	private String atCon;//명소 내용
-	private String imgName;//이미지명
-	private Integer a_keyNum;//명소 테이블 키워드 번호
-	private Integer k_keyNum;//키워드 테이블 키워드 번호
-	private String keyName;//키워드명
+	private String titlePlace;
+	
+	private String detailContent;
+	
+	private String subthumbScreen;
+	
+	private String titleSub;
+
+	
+	private String name;
+	private String con;
+	private String img;
+	private int anum;
+	private String id;
+	public void setName(String name) {
+		this.name = name;
+	}
+	private String pass;
+	private String thumbnail;
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public String getThumbnailScreen() {
+		return thumbnailScreen;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public int getAnum() {
+		return anum;
+	}
+	public void setAnum(int anum) {
+		this.anum = anum;
+	}
+	public String getCon() {
+		return con;
+	}
+	public void setCon(String con) {
+		this.con = con;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
+	}
+	private Integer atNum;
+	private String atName;
+	private String atCon;
+	private String imgName;
+	private Integer a_keyNum;
+	private Integer k_keyNum;
+	private String keyName;
 	
 	
 	public Integer getAtNum() {
@@ -57,23 +115,46 @@ public class Product implements Serializable{
 	}
 	public void setKeyName(String keyName) {
 		this.keyName = keyName;
+
 	}
 	public String getName() {
 		return name;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setThumbnailScreen(String thumbnailScreen) {
+		this.thumbnailScreen = thumbnailScreen;
 	}
-	public String getPrice() {
-		return price;
+
+	public String getTitlePlace() {
+		return titlePlace;
 	}
-	public void setPrice(String price) {
-		this.price = price;
+
+	public void setTitlePlace(String titlePlace) {
+		this.titlePlace = titlePlace;
 	}
-	public String getPid() {
-		return pid;
+
+	public String getDetailContent() {
+		return detailContent;
 	}
-	public void setPid(String pid) {
-		this.pid = pid;
+
+	public void setDetailContent(String detailContent) {
+		this.detailContent = detailContent;
 	}
+
+	public String getSubthumbScreen() {
+		return subthumbScreen;
+	}
+
+	public void setSubthumbScreen(String subthumbScreen) {
+		this.subthumbScreen = subthumbScreen;
+	}
+
+	public String getTitleSub() {
+		return titleSub;
+	}
+
+	public void setTitleSub(String titleSub) {
+		this.titleSub = titleSub;
+	}
+
 }
