@@ -22,9 +22,9 @@
 	
 		</form>
 <p><a href="input">作成画面</a></p>
-	<p><a href="modify?NUM=11">修正画面</a></p>
+	<p><a href="modify?NUM=13">修正画面</a></p>
 	<p><a href="login">login画面</a></p>
-	<p><a href="list?keyNum=102">リスト画面へ番号</a></p>
+	<p><a href="list?keyNum=100">リスト画面へ番号</a></p>
 <body>
 		<form method="get" action="list">
 			<table border="1" align="center">

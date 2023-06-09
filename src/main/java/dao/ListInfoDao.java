@@ -17,7 +17,7 @@ public class ListInfoDao{
 	
 
 	public ArrayList<Product> AttractionList(Integer keyNum){
-		String select = "SELECT AT.ATTRACTION_NAME, AT.IMG_NAME, KT.KEYWORD_NAME "
+		String select = "SELECT AT.ATTRACTION_NUM, AT.ATTRACTION_NAME, AT.IMG_NAME "
 				+ "FROM ATTRACTION_TBL AT, KEYWORD_TBL KT "
 				+ "WHERE AT.KEYWORD_NUM = KT.KEYWORD_NUM "
 				+ "AND KT.KEYWORD_NUM = ?";
@@ -34,9 +34,10 @@ public class ListInfoDao{
 				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
 				while(rs.next()) {
 					pd = new Product();
-					pd.setAtName(rs.getString(1));
-					pd.setImgName(path+rs.getString(2));
-					pd.setKeyName(rs.getString(3));
+					pd.setAnum(Integer.parseInt( rs.getString(1)));
+					pd.setAtName(rs.getString(2));
+					pd.setImgName(path+rs.getString(3));
+
 					list.add(pd);
 					for(int i = 0; i<list.size(); i++) {
 						System.out.println(list.get(i));
@@ -56,7 +57,7 @@ public class ListInfoDao{
 		return list;
 	}
 	public ArrayList<Product> AttractionList(String keyName){
-		String select = "SELECT ATTRACTION_NAME, IMG_NAME "
+		String select = "SELECT ATTRACTION_NUM, ATTRACTION_NAME, IMG_NAME "
 				+ "FROM ATTRACTION_TBL "
 				+ "WHERE KEYWORD_NUM = (SELECT KEYWORD_NUM FROM KEYWORD_TBL WHERE KEYWORD_NAME = ?)";
 			ArrayList<Product> list = new ArrayList<Product>();
@@ -71,8 +72,9 @@ public class ListInfoDao{
 				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
 				while(rs.next()) {
 					pd = new Product();
-					pd.setAtName(rs.getString(1));
-					pd.setImgName(path+rs.getString(2));
+					pd.setAnum(Integer.parseInt( rs.getString(1)));
+					pd.setAtName(rs.getString(2));
+					pd.setImgName(path+rs.getString(3));
 					list.add(pd);
 				}
 			}catch(Exception e) {

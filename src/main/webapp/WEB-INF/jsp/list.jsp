@@ -41,7 +41,7 @@
 						</div>
 						<div id="adminBtnWrap">
 							<a href="attractionModify.jsp?ATNUM=102">修正</a> <a
-								href="delete?ATNUM=5"">削除</a>
+								href="delete?ATNUM=${result.anum }">削除</a>
 						</div>
 					</li>
 				</c:forEach> 
