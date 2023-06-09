@@ -27,24 +27,8 @@ public class WebRequestContext implements RequestContext{
     private HttpServletRequest imgRequest;
     public WebRequestContext(){}
 
-<<<<<<< HEAD
+
     public void setRequest(Object req){//1. 여기가  파라미터를 보내면 받는 곳
-        request=(HttpServletRequest) req;
-        parameters=request.getParameterMap();
-    }
-=======
->>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
-    public String getCommandPath(){
-        //螟画焚request縺ｫ縺ゅｋ繝ｪ繧ｯ繧ｨ繧ｹ繝医�ｮServletPath繧呈歓蜃ｺ
-        String servletPath=request.getServletPath();
-        String commandPath=servletPath.substring(1);
-        return commandPath;
-<<<<<<< HEAD
-    public void setRequest(Object req){
-=======
-    }
-    public void setRequest(Object req){//1. 여기가  파라미터를 보내면 받는 곳
->>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
     	request = (HttpServletRequest)req;
 
 		try {
@@ -82,20 +66,12 @@ public class WebRequestContext implements RequestContext{
     public String[] getParameter(String key){
         return (String[])parameters.get(key);
     }
-<<<<<<< HEAD
-    public Object getRequest(){ //setReques에서 설정한 것이 여기로 나온다. 
-    public String[] postParameter(String key) {
-    	return (String[])postParameters.get(key);
-    }
+
     public String getCommandPath(){
     	String servletPath=request.getServletPath();
         String commandPath=servletPath.substring(1);
         return commandPath;
     }
-    public Object getRequest(){
-        return request;
-    } 
-=======
 
     public Object getRequest(){
         return request;
@@ -104,7 +80,6 @@ public class WebRequestContext implements RequestContext{
     	return (String[])postParameters.get(key);
     }
 
->>>>>>> 2a74b72dd04a7b67c756a9882ff2d65acfdb479e
     public boolean uploadFile() {
     	System.out.println("upload");
 		Boolean flag = false;

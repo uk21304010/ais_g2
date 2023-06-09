@@ -9,3 +9,4 @@ public interface ResponseContext {
     public Object getResponse();
 	public void setTargetCommand(String string);
 }
+

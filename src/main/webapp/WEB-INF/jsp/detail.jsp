@@ -22,7 +22,7 @@
 	margin: 5px;
 }
 
-#big {
+/* #big {
 	display: flex;
 	flex-direction: row; justify-content : center; position : absolute;
 	flex-direction : row; justify-content : center; position : absolute;
@@ -32,56 +32,80 @@
 	flex-direction: row;
 	justify-content: center;
 	position: absolute;
-}
+} */
 </style>
 </head>
 <%
 ArrayList<Product> showDetail = (ArrayList) request.getAttribute("result");
+ArrayList<Product> showSub = (ArrayList) request.getAttribute("subResult");
 %>
 <script type="text/javascript">
 function setTimeOut(){
 	setInterval(() => {
 		 const move = document.getElementById('big');
 		 	const left = window.getComputedStyle(move).left;
-		 	//move.style.left = parseInt(left) + 100 + "px";
+		 	move.style.left = parseInt(left) + 100 + "px";
 	}, 2000);
 
 }
 	</script>
-<body onload="setTimeOut()">
-	<div class="id">
-		<table border="1" align="center">
-			<tr>
-				<td>섬네</td>
-				<td>제목</td>
-				<td>내용</td>
-				<%
+<div class="id">
+	<table border="1" align="center">
+		<tr>
+			<td>섬네</td>
+			<td>제목</td>
+			<td>내용</td>
+			<%
 				for (Product pr : showDetail) {
 				%>
-			
-			<tr>
-				<td><%=pr.getThumbnailScreen()%></td>
-				<td><%=pr.getTitlePlace()%></td>
-				<td><%=pr.getDetailContent()%></td>
-			</tr>
-			<%
+		
+		<tr>
+			<td><%=pr.getThumbnailScreen()%></td>
+			<td><%=pr.getTitlePlace()%></td>
+			<td><%=pr.getDetailContent()%></td>
+		</tr>
+		<%
 			}
 			%>
-		</table>
-	</div>
-
-	<table>
-		<tr>
-
-			<td>1
-				<div id="big">
-					<div class="try1 item1"></div>
-					<div class="try1 item2"></div>
-					<div class="try1 item3"></div>
-					<div class="try1 item4"></div>
-				</div>
-			</td>
-		</tr>
 	</table>
+</div>
+
+<table>
+	<tr>
+
+		<td>
+			<h2 align="center">おすすめ</h2>
+		</td>
+	</tr>
+	<%
+	for (Product ss : showSub) {
+	%>
+	<tr>
+		<td>서브타이틀</td>
+	</tr>
+	<tr>
+		<td>서브섬네일화면1</td>
+		<td><%=ss.getSubthumbScreen() %></td>
+	</tr>
+	<tr>
+		<td>서브섬네일화면2</td>
+		<td><%=ss.getSubthumbScreen() %></td>
+	</tr>
+	<tr>
+		<td>서브섬네일화면3</td>
+		<td><%=ss.getSubthumbScreen() %></td>
+	</tr>
+	<tr>
+		<td>서브섬네일화면4</td>
+		<td><%=ss.getSubthumbScreen() %></td>
+	</tr>
+
+	<tr>
+		<td>타이틀</td>
+	</tr>
+	<%
+	}
+	%>
+</table>
 </body>
 </html>

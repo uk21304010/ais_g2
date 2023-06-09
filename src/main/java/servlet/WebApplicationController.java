@@ -30,7 +30,7 @@ public class WebApplicationController implements ApplicationController{
 
         req.setAttribute("result",resc.getResult());//ResponscContext縺ｧ邨先棡蜿門ｾ励＠縺ｦ險ｭ螳�
         RequestDispatcher rd = req.getRequestDispatcher(resc.getTarget());//ResponscContext縺ｧ螳帛�医ｒ蜿門ｾ励＠縺ｦ險ｭ螳�
-
+        
         try{
             rd.forward(req, res);
         }catch(ServletException e){

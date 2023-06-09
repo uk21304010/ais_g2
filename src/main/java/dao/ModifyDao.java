@@ -136,7 +136,7 @@ public class ModifyDao{
 	public int getANum() {
 		String sql = "Select max(attraction_num) from ATTRACTION_TBL";
 		int i=0;
-		try{
+		try{//가장 높은 숫자를 뽑으면 8개는 나오지 않나?
 
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(LOCAL,USER,PASS);
