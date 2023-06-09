@@ -31,15 +31,49 @@ public class ListInfoDao{
 				pstmt.setInt(1, keyNum);
 				System.out.println(pstmt);
 				rs = pstmt.executeQuery();
+				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
 				while(rs.next()) {
 					pd = new Product();
 					pd.setAtName(rs.getString(1));
-					pd.setImgName(rs.getString(2));
+					pd.setImgName(path+rs.getString(2));
 					pd.setKeyName(rs.getString(3));
 					list.add(pd);
 					for(int i = 0; i<list.size(); i++) {
 						System.out.println(list.get(i));
 					}
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					pstmt.close();
+					conn.close();
+				}catch(Exception e) {
+					
+				}
+			}
+		return list;
+	}
+	public ArrayList<Product> AttractionList(String keyName){
+		String select = "SELECT ATTRACTION_NAME, IMG_NAME "
+				+ "FROM ATTRACTION_TBL "
+				+ "WHERE KEYWORD_NUM = (SELECT KEYWORD_NUM FROM KEYWORD_TBL WHERE KEYWORD_NAME = ?)";
+			ArrayList<Product> list = new ArrayList<Product>();
+			Product pd = null;
+			try {
+				System.out.println(keyName);
+				Class.forName(driver);
+				conn = DriverManager.getConnection(url,"hr","hr");
+				pstmt = conn.prepareStatement(select);
+				pstmt.setString(1, keyName);
+				rs = pstmt.executeQuery();
+				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
+				while(rs.next()) {
+					pd = new Product();
+					pd.setAtName(rs.getString(1));
+					pd.setImgName(path+rs.getString(2));
+					list.add(pd);
 				}
 			}catch(Exception e) {
 				e.printStackTrace();

@@ -38,6 +38,7 @@
 		}
 		%>
 		</select>
+
 			<h1>送信テスト</h1>
 			<input type ='hidden' value="${result.anum}" name='ANUM'multiple><br>
 	商品番号<input type='text' value="${result.name}" name='NAME'multiple><br>
