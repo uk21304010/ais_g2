@@ -7,21 +7,14 @@
 	<title>Start</title>
 	</head>
 
-<<<<<<< HEAD
-=======
-	
 	</style>
->>>>>>> fa8c6fc713da5c368b9c4eee48cfb14c94015b10
 	<body>
 		<form method="get" action="detail">
 			<table border="1" align="center"　>
 				<tr>
 					<td><input type="text" name="NUM" value="" /><br /></td>
-<<<<<<< HEAD
 					<td><input type="submit" value="��懍ｶ�" /></td>
-=======
 					<td><input type="submit" value="詳細画面" /></td>
->>>>>>> fa8c6fc713da5c368b9c4eee48cfb14c94015b10
 				</tr>
 			</table>
 

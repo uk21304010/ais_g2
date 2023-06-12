@@ -7,18 +7,14 @@ import java.util.Properties;
 
 import servlet.RequestContext;
 
-<<<<<<< HEAD
-public abstract class CommandFactory{ /
-=======
 public abstract class CommandFactory{
->>>>>>> fa8c6fc713da5c368b9c4eee48cfb14c94015b10
 	public static AbstractCommand getCommand(RequestContext rc){
 		AbstractCommand command = null;
 		Properties prop = new Properties();
 		
 		try{
 
-			prop.load(new FileInputStream("C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
+			prop.load(new FileInputStream("C:\\Users\\AIS-N\\eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
 
 			String name = prop.getProperty(rc.getCommandPath());
 
