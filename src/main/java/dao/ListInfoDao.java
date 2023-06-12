@@ -17,7 +17,7 @@ public class ListInfoDao{
 	
 
 	public ArrayList<Product> AttractionList(Integer keyNum){
-		String select = "SELECT AT.ATTRACTION_NAME, AT.IMG_NAME, KT.KEYWORD_NAME "
+		String select = "SELECT AT.ATTRACTION_NUM, AT.ATTRACTION_NAME, AT.IMG_NAME "
 				+ "FROM ATTRACTION_TBL AT, KEYWORD_TBL KT "
 				+ "WHERE AT.KEYWORD_NUM = KT.KEYWORD_NUM "
 				+ "AND KT.KEYWORD_NUM = ?";
@@ -31,11 +31,13 @@ public class ListInfoDao{
 				pstmt.setInt(1, keyNum);
 				System.out.println(pstmt);
 				rs = pstmt.executeQuery();
+				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
 				while(rs.next()) {
 					pd = new Product();
-					pd.setAtName(rs.getString(1));
-					pd.setImgName(rs.getString(2));
-					pd.setKeyName(rs.getString(3));
+					pd.setAnum(Integer.parseInt( rs.getString(1)));
+					pd.setAtName(rs.getString(2));
+					pd.setImgName(path+rs.getString(3));
+
 					list.add(pd);
 					for(int i = 0; i<list.size(); i++) {
 						System.out.println(list.get(i));
@@ -54,41 +56,40 @@ public class ListInfoDao{
 			}
 		return list;
 	}
-	
-	public ArrayList<Product> asdasd() {
-		String select = "Select KEYWORD_NUM, KEYWORD_NAME from KEYWORD_TBL";
-		ArrayList<Product> list = new ArrayList<Product>();
-		
-		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url,"hr","hr");
-			pstmt = conn.prepareStatement(select);
-			ResultSet result = pstmt.executeQuery(select);
-			
-			while (result.next()) {
-				Product pt = new Product();
-				pt.setA_keyNum(result.getInt("KEYWORD_NUM"));
-				pt.setName(result.getString("KEYWORD_NAME"));
-				
-				list.add(pt);
-			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
+
+	public ArrayList<Product> AttractionList(String keyName){
+		String select = "SELECT ATTRACTION_NUM, ATTRACTION_NAME, IMG_NAME "
+				+ "FROM ATTRACTION_TBL "
+				+ "WHERE KEYWORD_NUM = (SELECT KEYWORD_NUM FROM KEYWORD_TBL WHERE KEYWORD_NAME = ?)";
+			ArrayList<Product> list = new ArrayList<Product>();
+			Product pd = null;
 			try {
-				rs.close();
-				pstmt.close();
-				conn.close();
+				System.out.println(keyName);
+				Class.forName(driver);
+				conn = DriverManager.getConnection(url,"hr","hr");
+				pstmt = conn.prepareStatement(select);
+				pstmt.setString(1, keyName);
+				rs = pstmt.executeQuery();
+				String path = "C:/Users/user/eclipse-workspace/ais_g2/image/"; 
+				while(rs.next()) {
+					pd = new Product();
+					pd.setAnum(Integer.parseInt( rs.getString(1)));
+					pd.setAtName(rs.getString(2));
+					pd.setImgName(path+rs.getString(3));
+					list.add(pd);
+				}
 			}catch(Exception e) {
-				
+				e.printStackTrace();
+			}finally {
+				try {
+					rs.close();
+					pstmt.close();
+					conn.close();
+				}catch(Exception e) {
+					
+				}
 			}
-		}
-		
-
 		return list;
-		
-
 	}
 }
 	

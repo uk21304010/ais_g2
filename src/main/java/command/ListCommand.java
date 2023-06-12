@@ -13,14 +13,20 @@ public class ListCommand extends AbstractCommand {
 public ResponseContext execute(ResponseContext resc){
 		RequestContext reqc = getRequestContext();
 
-		
+		ArrayList<Product> list = new ArrayList<Product>();
 		String [] keyNumse = reqc.getParameter("keyNum");
-		Integer keyNum = Integer.parseInt(keyNumse[0]);
-		System.out.println(keyNum);
-		ListInfoDao ld = new ListInfoDao();
-		ArrayList<Product> list = ld.AttractionList(keyNum);
-		
-		System.out.println(list);
+		String [] keyNamse = reqc.getParameter("keyName");
+
+		if(keyNumse==null) {
+			String keyName = keyNamse[0];
+			ListInfoDao ld = new ListInfoDao();
+			list = ld.AttractionList(keyName);
+		}else{
+			Integer keyNum = Integer.parseInt(keyNumse[0]);
+			ListInfoDao ld = new ListInfoDao();
+			list = ld.AttractionList(keyNum);
+		}
+
 //		for(int i = 0; i<list.size(); i++) {
 //			System.out.println(list.get(i));
 //		}
