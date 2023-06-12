@@ -13,8 +13,11 @@ public abstract class CommandFactory{
 		Properties prop = new Properties();
 		
 		try{
-				
+
+
 			prop.load(new FileInputStream("C:\\Users\\AIS-N\\eclipse-workspace\\ais_g2\\src\\main\\java\\command\\commands.properties"));
+
+
 			String name = prop.getProperty(rc.getCommandPath());
 
 			Class c = Class.forName(name);

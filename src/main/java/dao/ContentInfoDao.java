@@ -17,60 +17,27 @@ public class ContentInfoDao{
 	private ResultSet rs = null;
 	private String driver="oracle.jdbc.OracleDriver";
 	private String url="jdbc:oracle:thin:@//localhost:1521/xe";
-
-	public static List<Integer> getRandomNumbers(int min, int max, int count) {
-		Random random = new Random();
-		List<Integer> randomNumbers = new ArrayList<>();
-
-		for (int i = 0; i < count; i++) {
-			int randomNumber = random.nextInt(max - min + 1) + min;
-			System.out.println("난수생성하기");
-			randomNumbers.add(randomNumber);
-		}
-
-		return randomNumbers;
-	}
-/////////////////////////////////////////////////////////////////////////////////////////////
 	
 
-
-	public static ArrayList main(String nums) {
-		int min = 100;
-		int max = 105;
-		int count = 4;
-System.out.println("난수받기");
-		List<Integer> main = getRandomNumbers(min, max, count);
-		return (ArrayList) main;
-	}
-	
-
-/////////////////////////////////////////////////////	
-
-	public ArrayList<Product> showSub (String nums) {
-		String select = " select attraction_num, img_name from attraction_Tbl where attraction_num = ? or "
-				+ " attraction_num = ? or attraction_num = ? or attraction_num =? ";
+	public ArrayList<Product> showSub (String code) {
+		String select = "select KEYWORD_NUM, KEYWORD_NAME from KEYWORD_TBL "
+				+ "where THEME_CODE = ?";
 		ArrayList<Product> showSub = new ArrayList<Product>();
-
 		try {
-				Class.forName(driver);
-				cn=DriverManager.getConnection(url,"hr","hr");
-				st=cn.prepareStatement(select);
-				ArrayList numbox = main(nums);;
-				for (int i = 0; i < numbox.size(); i++) {
-				    int number = (int) numbox.get(i);
-				    // 반복문 내에서 요소에 대한 작업 수행
-				    System.out.println(number);
-				}
-				rs=st.executeQuery();
-				
-				while(rs.next()) {
-					Product product = new Product();
-					product.setSubthumbScreen(rs.getString(1));
-					product.setSubthumbScreen(rs.getString(2));
-					product.setSubthumbScreen(rs.getString(3));
-					product.setSubthumbScreen(rs.getString(4));
-					showSub.add(product);
-				}
+			Class.forName(driver);
+			cn=DriverManager.getConnection(url,"hr","hr");
+			st=cn.prepareStatement(select);
+			st.setString(1, code);
+			rs=st.executeQuery();
+			
+			while(rs.next()) {
+				Product product = new Product();
+				product.setAtNum(rs.getInt(1));
+				product.setName(rs.getString(2));				
+				showSub.add(product);
+			}
+			
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -80,10 +47,7 @@ System.out.println("난수받기");
 		}
 		return showSub;
 	}
-	private PreparedStatement setString(int i, String string) {
-	// TODO Auto-generated method stub
-	return null;
-}
+
 	public ArrayList<Product> showDetail(int num) {
 		String select = " select attraction_name,Attraction_Con,Img_Name "
 				+ " from Keyword_tbl kt, Attraction_tbl at "
@@ -115,7 +79,7 @@ System.out.println("난수받기");
 				e.printStackTrace();
 			}
 		}
-		return showDetail; //내가 쓸 처리가 있는 Command로 이게 이동 
+		return showDetail; 
 	}
 
 }

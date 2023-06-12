@@ -56,6 +56,7 @@ public class ListInfoDao{
 			}
 		return list;
 	}
+
 	public ArrayList<Product> AttractionList(String keyName){
 		String select = "SELECT ATTRACTION_NUM, ATTRACTION_NAME, IMG_NAME "
 				+ "FROM ATTRACTION_TBL "
