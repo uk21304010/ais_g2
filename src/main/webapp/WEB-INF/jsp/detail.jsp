@@ -92,8 +92,8 @@ for (Product pr : showDetail) {
 <%
     // 1. 난수 생성
     Random random = new Random();
-    int min = 100;
-    int max = 104;
+    int min = 1;
+    int max = 6;
     int count = 4;
     List<Integer> randomNumbers = new ArrayList<>();
    
@@ -111,9 +111,19 @@ for (Product pr : showDetail) {
         Class.forName("oracle.jdbc.OracleDriver"); // JDBC 드라이버 로드
 
         Connection connection = DriverManager.getConnection(url, username, password);
-        String query = " SELECT distinct at.attraction_num, at.img_name "
-  + " FROM attraction_Tbl at, keyword_tbl kt "
-        + " WHERE kt.keyword_num = ? or kt.keyword_num = ? or kt.keyword_num = ? or kt.keyword_num = ? ";
+        String query = " SELECT DISTINCT "
+                + "at.attraction_num,  "
+                + "DECODE(at.attraction_num, "
+               +    "1, '上野公園', "
+                +    "2, '浅草寺', "
+                +   "3, '渋谷スカイ', "
+                +   "4, '一覧', "
+                +  "5, 'お台場', "
+                + " 6, '横浜', "
+                + " 7, 'お台場') AS title, "
+                + " at.img_name"
+             + " from attraction_tbl at, keyword_tbl kt "
+             + " where at.attraction_num = ? or at.attraction_num = ? or at.attraction_num = ? or at.attraction_num = ? ";
        
         PreparedStatement statement = connection.prepareStatement(query);
         for (int i = 0; i < randomNumbers.size(); i++) {
@@ -126,12 +136,16 @@ for (Product pr : showDetail) {
         while (resultSet.next()) {
             int attractionNum = resultSet.getInt("attraction_num");
             String imgName = resultSet.getString("img_name");
+            String subName = resultSet.getString("title");
             // 각 행의 값을 출력
             %>
-
 <tr>
-<td><%= attractionNum %></td>
-<td><%= imgName %></td>
+
+<td><a href="detail?NUM=<%=attractionNum %>"><%= imgName %></a></td><br/>
+<td><%= subName %></td>
+
+
+
 </tr>
 <%
         }
@@ -150,6 +164,5 @@ for (Product pr : showDetail) {
 <td>타이틀</td>
 </tr>
 </table>
-   <button onclick="refreshPage()">Refresh</button>
 </body>
 </html>

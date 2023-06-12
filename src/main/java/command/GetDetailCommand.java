@@ -9,7 +9,7 @@ public class GetDetailCommand extends AbstractCommand{
 		
 		RequestContext reqc=getRequestContext();
 
-		String[]pids=reqc.postParameter("NUM"); //NAME�擽�梠 �擽�ｦ� ��滝ｰ呷擽? ? ? 
+		String[]pids=reqc.getParameter("NUM"); //NAME�擽�梠 �擽�ｦ� ��滝ｰ呷擽? ? ? 
 		String pid = pids[0];
 		
 		ContentInfoDao db = new ContentInfoDao();

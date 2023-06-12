@@ -22,7 +22,7 @@
 	
 		</form>
 <p><a href="input">作成画面</a></p>
-	<p><a href="modify?NUM=13">修正画面</a></p>
+	<p><a href="modify?NUM=2">修正画面</a></p>
 	<p><a href="login">login画面</a></p>
 	<p><a href="list?keyNum=100">リスト画面へ番号</a></p>
 <body>
@@ -36,7 +36,7 @@
 
 		</form>
 
-	<p><a href="main?NUM=100">商品登録画面へ</a></p>
+	<p><a href="main">メイン画面へ</a></p>
 
 	</body>
 	</html>
