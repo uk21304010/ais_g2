@@ -11,7 +11,7 @@ public class ConnectionManager{
 	private Connection cn = null;
 	private static ConnectionManager manager = null;
 
-	
+
 	public static ConnectionManager getInstance() {
 		if(manager == null) {
 			System.out.println("getInstance");
@@ -57,7 +57,7 @@ public class ConnectionManager{
 		catch(SQLException e) {
 			System.out.println("commitFail");
 			e.printStackTrace();
-			}
+		}
 	}
 
 

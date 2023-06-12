@@ -7,15 +7,13 @@ public class Product implements Serializable{
 	private String thumbnailScreen;
 	
 	private String titlePlace;
-	
+	 	
 	private String detailContent;
 	
 	private String subthumbScreen;
 	
 	private String titleSub;
-<<<<<<< HEAD
-
-=======
+	
 	private int user_id;
 	
 	public int getUser_id() {
@@ -24,7 +22,6 @@ public class Product implements Serializable{
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
->>>>>>> 7eba6b02ccb3e1084aa044b123f2c35e504c8507
 	private String name;
 	private String con;
 	private String img;

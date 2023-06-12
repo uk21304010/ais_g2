@@ -17,8 +17,6 @@
 				<td><input type="submit" value="검색" /></td>
 			</tr>
 		</table>
-	
-		pageEncoding="UTF-8"%>
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -54,8 +52,6 @@
 			</table>
 
 		</form>
->>>>>>> 7eba6b02ccb3e1084aa044b123f2c35e504c8507
-
 	</form>
 	<p>
 		<a href="input">作成画面</a>

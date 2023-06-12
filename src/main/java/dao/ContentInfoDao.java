@@ -55,7 +55,7 @@ System.out.println("난수받기");
 				Class.forName(driver);
 				cn=DriverManager.getConnection(url,"hr","hr");
 				st=cn.prepareStatement(select);
-				ArrayList numbox = main(nums);;
+				ArrayList numbox = main(nums);
 				for (int i = 0; i < numbox.size(); i++) {
 				    int number = (int) numbox.get(i);
 				    // 반복문 내에서 요소에 대한 작업 수행
@@ -85,9 +85,9 @@ System.out.println("난수받기");
 	return null;
 }
 	public ArrayList<Product> showDetail(int num) {
-		String select = " select attraction_name,Attraction_Con,Img_Name "
-				+ " from Keyword_tbl kt, Attraction_tbl at "
-				+ " where at.keyword_num = kt.keyword_Num and kt.keyword_num= ? ";
+		String select = " at.attraction_name,at.attraction_con, at.img_name "
+				+ " from keyword_tbl kt, attraction_tbl at "
+				+ " where at.keyword_num = kt.keyword_num and at.attraction_num = ? ";
 
 		ArrayList<Product> showDetail = new ArrayList<Product>();
 
