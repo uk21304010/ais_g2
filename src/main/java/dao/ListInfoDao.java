@@ -54,5 +54,41 @@ public class ListInfoDao{
 			}
 		return list;
 	}
+	
+	public ArrayList<Product> asdasd() {
+		String select = "Select KEYWORD_NUM, KEYWORD_NAME from KEYWORD_TBL";
+		ArrayList<Product> list = new ArrayList<Product>();
+		
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url,"hr","hr");
+			pstmt = conn.prepareStatement(select);
+			ResultSet result = pstmt.executeQuery(select);
+			
+			while (result.next()) {
+				Product pt = new Product();
+				pt.setA_keyNum(result.getInt("KEYWORD_NUM"));
+				pt.setName(result.getString("KEYWORD_NAME"));
+				
+				list.add(pt);
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			}catch(Exception e) {
+				
+			}
+		}
+		
+
+		return list;
+		
+
+	}
 }
 	

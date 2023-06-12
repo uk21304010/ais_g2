@@ -15,13 +15,23 @@ public class ContentInfoDao{
 	private String driver="oracle.jdbc.OracleDriver";
 	private String url="jdbc:oracle:thin:@//localhost:1521/xe";
 
-	public ArrayList<Product> showSub () {
-		String select = "";
-		
-		
+	public ArrayList<Product> showSub (String code) {
+		String select = "select KEYWORD_NUM, KEYWORD_NAME from KEYWORD_TBL "
+				+ "where THEME_CODE = ?";
 		ArrayList<Product> showSub = new ArrayList<Product>();
-	
 		try {
+			Class.forName(driver);
+			cn=DriverManager.getConnection(url,"hr","hr");
+			st=cn.prepareStatement(select);
+			st.setString(1, code);
+			rs=st.executeQuery();
+			
+			while(rs.next()) {
+				Product product = new Product();
+				product.setAtNum(rs.getInt(1));
+				product.setName(rs.getString(2));				
+				showSub.add(product);
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -63,7 +73,7 @@ public class ContentInfoDao{
 				e.printStackTrace();
 			}
 		}
-		return showDetail; //내가 쓸 처리가 있는 Command로 이게 이동 
+		return showDetail; 
 	}
 
 }
