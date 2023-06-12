@@ -110,6 +110,7 @@ public class ModifyDao{
 			e.printStackTrace();
 		}
 	}
+	
 	public boolean deleteAttraction(int atNum) {
 		String delete = "DELETE FROM ATTRACTION_TBL "
 				+ "WHERE ATTRACTION_NUM = ? ";

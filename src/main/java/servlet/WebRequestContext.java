@@ -28,6 +28,12 @@ public class WebRequestContext implements RequestContext{
     public WebRequestContext(){}
 
 
+    public String getCommandPath(){
+        
+        String servletPath=request.getServletPath();
+        String commandPath=servletPath.substring(1);
+        return commandPath;
+    }
     public void setRequest(Object req){//1. 여기가  파라미터를 보내면 받는 곳
     	request = (HttpServletRequest)req;
 
@@ -67,11 +73,6 @@ public class WebRequestContext implements RequestContext{
         return (String[])parameters.get(key);
     }
 
-    public String getCommandPath(){
-    	String servletPath=request.getServletPath();
-        String commandPath=servletPath.substring(1);
-        return commandPath;
-    }
 
     public Object getRequest(){
         return request;
@@ -85,7 +86,7 @@ public class WebRequestContext implements RequestContext{
 		Boolean flag = false;
     	//String imgPath = request.getRealPath("images");
     	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\image";
+    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\image\\";
     	try {
     		List<FileItem> files =sf.parseRequest(imgRequest);
             System.out.println(files);
