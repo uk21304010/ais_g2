@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="dto.*, java.util.*"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.Random"%>
+<%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.DriverManager"%>
+<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="java.sql.ResultSet"%>
+<%@ page import="java.sql.SQLException"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,10 +41,14 @@
 	position: absolute;
 } */
 </style>
+<script>
+        function refreshPage() {
+        	  location.reload(true);
+        }
+    </script>
 </head>
 <%
 ArrayList<Product> showDetail = (ArrayList) request.getAttribute("result");
-ArrayList<Product> showSub = (ArrayList) request.getAttribute("subResult");
 %>
 <script type="text/javascript">
 function setTimeOut(){
@@ -51,6 +62,7 @@ function setTimeOut(){
 	</script>
 <div class="id">
 	<table border="1" align="center">
+
 		<tr>
 			<td>섬네</td>
 			<td>제목</td>
@@ -77,35 +89,67 @@ function setTimeOut(){
 			<h2 align="center">おすすめ</h2>
 		</td>
 	</tr>
-	<%
-	for (Product ss : showSub) {
-	%>
-	<tr>
-		<td>서브타이틀</td>
-	</tr>
-	<tr>
-		<td>서브섬네일화면1</td>
-		<td><%=ss.getSubthumbScreen() %></td>
-	</tr>
-	<tr>
-		<td>서브섬네일화면2</td>
-		<td><%=ss.getSubthumbScreen() %></td>
-	</tr>
-	<tr>
-		<td>서브섬네일화면3</td>
-		<td><%=ss.getSubthumbScreen() %></td>
-	</tr>
-	<tr>
-		<td>서브섬네일화면4</td>
-		<td><%=ss.getSubthumbScreen() %></td>
-	</tr>
+		<%
+    // 1. 난수 생성
+    Random random = new Random();
+    int min = 100;
+    int max = 104;
+    int count = 4;
+    List<Integer> randomNumbers = new ArrayList<>();
+    
+    for (int i = 0; i < count; i++) {
+        int randomNumber = random.nextInt(max - min + 1) + min;
+        randomNumbers.add(randomNumber);
+    }
 
+    // 2. DB 연결 및 쿼리 실행
+    String url = "jdbc:oracle:thin:@//localhost:1521/xe"; // DB 연결 정보 입력
+    String username = "hr"; // DB 사용자명 입력
+    String password = "hr"; // DB 비밀번호 입력
+
+    try {
+        Class.forName("oracle.jdbc.OracleDriver"); // JDBC 드라이버 로드
+
+        Connection connection = DriverManager.getConnection(url, username, password);
+        String query = " SELECT distinct at.attraction_num, at.img_name " 
+		 		   +	" FROM attraction_Tbl at, keyword_tbl kt " 
+        			+	" WHERE kt.keyword_num = ? or kt.keyword_num = ? or kt.keyword_num = ? or kt.keyword_num = ? ";
+        
+        PreparedStatement statement = connection.prepareStatement(query);
+        for (int i = 0; i < randomNumbers.size(); i++) {
+            statement.setInt(i + 1, randomNumbers.get(i)); // 쿼리의 ? 부분에 난수 값을 바인딩
+        }
+
+        ResultSet resultSet = statement.executeQuery();
+
+        // 3. 결과 출력
+        while (resultSet.next()) {
+            int attractionNum = resultSet.getInt("attraction_num");
+            String imgName = resultSet.getString("img_name");
+            // 각 행의 값을 출력	
+            %>
+	
+	<tr>
+		<td><%= attractionNum %></td>
+		<td><%= imgName %></td>
+	</tr>
+	<%
+        }
+        // 4. 자원 해제
+        resultSet.close();
+        statement.close();
+        connection.close();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    // 5. 다시 페이지 호출을 위한 리다이렉트
+%>
 	<tr>
 		<td>타이틀</td>
 	</tr>
-	<%
-	}
-	%>
 </table>
+   <button onclick="refreshPage()">Refresh</button>
 </body>
 </html>
