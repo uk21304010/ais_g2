@@ -53,7 +53,7 @@ public class AccountDao{
 		Product p = new Product();
 		try{
 			cn = ConnectionManager.getInstance().getConnection();
-			String sql = "select * from ADMIN_ACCOUNT_TBL where PASSWORD = ? and ACC_NAME = ?";
+			String sql = "select ACC_NAME,PASSWORD from ADMIN_ACCOUNT_TBL where PASSWORD = ? and ACC_NAME = ?";
 			st = cn.prepareStatement(sql);
 
 			st.setString(1, pass);

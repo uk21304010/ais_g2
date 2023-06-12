@@ -8,7 +8,8 @@
 
 <title>Sakura-スレッド一覧</title>
 </head>
-<header> </header>
+<header>
+ </header>
 <body>
 	<h1>Sakuraスレッド一覧</h1>
 	<form method='post' action='create' enctype="multipart/form-data">

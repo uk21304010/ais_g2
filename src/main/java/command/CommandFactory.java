@@ -7,7 +7,11 @@ import java.util.Properties;
 
 import servlet.RequestContext;
 
+<<<<<<< HEAD
 public abstract class CommandFactory{ /
+=======
+public abstract class CommandFactory{
+>>>>>>> fa8c6fc713da5c368b9c4eee48cfb14c94015b10
 	public static AbstractCommand getCommand(RequestContext rc){
 		AbstractCommand command = null;
 		Properties prop = new Properties();

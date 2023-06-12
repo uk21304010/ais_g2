@@ -3,12 +3,13 @@ package command;
 import servlet.RequestContext;
 import servlet.ResponseContext;
 
-public class LoginCommand extends AbstractCommand{
+
+public class TestCommand extends AbstractCommand{
 	public ResponseContext execute(ResponseContext resc){
 		
-		resc.setTarget("login");
-
-
+		resc.setTarget("test");
 		return resc;
+		
+	
 	}
 }
