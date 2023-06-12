@@ -31,7 +31,7 @@ public class ListInfoDao{
 				pstmt.setInt(1, keyNum);
 				System.out.println(pstmt);
 				rs = pstmt.executeQuery();
-				String path = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\webapp\\image"; 
+				String path = "image\\";
 				while(rs.next()) {
 					pd = new Product();
 					pd.setAnum(Integer.parseInt( rs.getString(1)));
@@ -70,7 +70,7 @@ public class ListInfoDao{
 				pstmt = conn.prepareStatement(select);
 				pstmt.setString(1, keyName);
 				rs = pstmt.executeQuery();
-		//		String path = "\\image"; 
+				String path = "\\image\\"; 
 				while(rs.next()) {
 					pd = new Product();
 					pd.setAnum(Integer.parseInt( rs.getString(1)));
