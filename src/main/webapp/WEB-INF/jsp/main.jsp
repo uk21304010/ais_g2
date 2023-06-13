@@ -13,7 +13,7 @@ ContentInfoDao cd = new ContentInfoDao();
 <!DOCTYPE html>
 <html>
 <head>
-
+<jsp:include page="header.jsp"></jsp:include>
 <meta charset="utf-8">
 <title>MAIN画面</title>
 <style type="text/css">
@@ -451,4 +451,8 @@ footer {
   </script>
 
 </body>
+<footer>
+
+<jsp:include page="footer.jsp"></jsp:include>
+</footer>
 </html>
