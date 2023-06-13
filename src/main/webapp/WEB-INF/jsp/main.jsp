@@ -13,7 +13,7 @@ ContentInfoDao cd = new ContentInfoDao();
 <!DOCTYPE html>
 <html>
 <head>
-
+<jsp:include page="header.jsp"></jsp:include>
 <meta charset="utf-8">
 <title>MAIN画面</title>
 <style type="text/css">
@@ -308,59 +308,7 @@ footer {
 			</h1>
 		</header>
 
-		<div>
-			<div class="dropmenu">
-				<ul>
-					<li class="dropmenu_li">
-						
-						<div class="liList">名所</div>
-						<ul>
-							<%
-							list = cd.showSub("t001");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-					<li class="dropmenu_li">
-						<div class="liList">グルメ</div>
-						<ul>
-							<%
-							list = cd.showSub("t002");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-					<li class="dropmenu_li">
-						<div class="liList">ショッピング</div>
-						<ul>
-							<%
-							list = cd.showSub("t003");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-				
-					<li class="liList_search_li">
-						<div class="liList_search">
-							<input type="text" class="liList_search_text"
-								placeholder="검색어 입력" maxlength="100">
-							<button type="submit" class="liList_search_btn">검색</button>
-						</div>
-					</li>
-				</ul>
-			</div>
+	
 
 			<h1 class="keyword_title">該当キーワードイメージ</h1>
 			<!-- Swiper -->
@@ -403,13 +351,13 @@ footer {
 					<li><a href="detail?NUM=1"><div class="liList">桜</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">神社</div></a>
+					<li><a href="detail?NUM=2"><div class="liList">神社</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">ランドマーク</div></a>
+					<li><a href="detail?NUM=3"><div class="liList">ランドマーク</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">グルメ</div></a>
+					<li><a href="detail?NUM=4"><div class="liList">グルメ</div></a>
 					</li>
 					
 					
@@ -455,4 +403,8 @@ footer {
   </script>
 
 </body>
+<footer>
+
+<jsp:include page="footer.jsp"></jsp:include>
+</footer>
 </html>

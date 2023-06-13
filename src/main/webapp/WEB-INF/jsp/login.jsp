@@ -6,13 +6,15 @@
 <jsp:useBean id="user" class="dto.Product" scope="page" />
 <jsp:setProperty name="user" property="id"  />
 <jsp:setProperty name="user" property="pass" />
+<jsp:include page="header.jsp"></jsp:include>
 
 <html>
-<head><title>商品登録</title>
+<head><title>管理者ログイン</title>
+</head>
 
-		 </head>
+
 <body>
-	<h1>商品登録</h1>
+	<h1>管理者ログイン</h1>
 	<%
 		Map userID =null;
 		if(session.getAttribute("session") !=null){
@@ -21,7 +23,7 @@
 		
 		if(userID !=null){%>
 <script>
-		alert('이미 로그인중');
+		alert('もうログインされてます。');
 		history.back();
 </script>
 		
@@ -35,4 +37,6 @@
 	${result}
 	<%}%>
 	</body>
+	<footer>
+	</footer>
 </html>

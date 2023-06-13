@@ -59,12 +59,12 @@ public class ContentInfoDao{
 			st=cn.prepareStatement(select);
 			st.setInt(1, num);
 			rs=st.executeQuery();
-			
+			String path = "image\\";
 				while(rs.next()) {
 					Product product = new Product();
 					product.setTitlePlace(rs.getString(1));
 					product.setDetailContent(rs.getString(2));
-					product.setThumbnailScreen(rs.getString(3));
+					product.setThumbnailScreen(path+rs.getString(3));
 					showDetail.add(product);
 				}
 		}catch(Exception e) {

@@ -14,15 +14,15 @@
 		if(result == true){
 	%>
 		<script type="text/javascript">
-			alert("삭제 성공했어유");
-			location.href = ""
+			alert("削除されました");
+			history.back();
 		</script>
 	<%
 		}else {
 	%>
 		<script type="text/javascript">
 			alert("삭제 실패라능");
-			location.href = ""
+			history.back();
 		</script>
 	<%		
 		}

@@ -8,10 +8,11 @@ pageEncoding="UTF-8"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
+<jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="main.jsp"></jsp:include>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -48,6 +49,7 @@ position: absolute;
         }
     </script>
 </head>
+<headr></headr>
 <%
 ArrayList<Product> showDetail = (ArrayList) request.getAttribute("result");
 %>
@@ -73,7 +75,7 @@ for (Product pr : showDetail) {
 %>
 
 <tr>
-<td><%=pr.getThumbnailScreen()%></td>
+<td><img src="<%=pr.getThumbnailScreen()%>"></td>
 <td><%=pr.getTitlePlace()%></td>
 <td><%=pr.getDetailContent()%></td>
 </tr>
@@ -118,7 +120,7 @@ for (Product pr : showDetail) {
                +    "1, '上野公園', "
                 +    "2, '浅草寺', "
                 +   "3, '渋谷スカイ', "
-                +   "4, '一覧', "
+                +   "4, '一蘭', "
                 +  "5, 'お台場', "
                 + " 6, '横浜', "
                 + " 7, 'お台場') AS title, "
@@ -132,17 +134,17 @@ for (Product pr : showDetail) {
         }
 
         ResultSet resultSet = statement.executeQuery();
-
+        String path = "image\\";
         // 3. 결과 출력
         while (resultSet.next()) {
             int attractionNum = resultSet.getInt("attraction_num");
-            String imgName = resultSet.getString("img_name");
+            String imgName =path+resultSet.getString("img_name");
             String subName = resultSet.getString("title");
             // 각 행의 값을 출력
             %>
 <tr>
 
-<td><a href="detail?NUM=<%=attractionNum %>"><%= imgName %></a></td><br/>
+<td><a href="detail?NUM=<%=attractionNum %>"><img src="<%= imgName %>"></a></td><br/>
 <td><%= subName %></td>
 
 
