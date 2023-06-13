@@ -46,7 +46,7 @@
 						<div id="adminBtnWrap">
 							<a href="modify?NUM=${result.anum}">修正</a> 
 							${result.anum}
-							<a　href="delete?ATNUM=${result.anum}">削除</a>
+							<a href="delete?ATNUM=${result.anum}">削除</a>
 						</div>
 					</li>
 				</c:forEach> 

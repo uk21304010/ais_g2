@@ -49,7 +49,7 @@ position: absolute;
         }
     </script>
 </head>
-<headr></headr>
+
 <%
 ArrayList<Product> showDetail = (ArrayList) request.getAttribute("result");
 %>
