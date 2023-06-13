@@ -5,6 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
 
 <!DOCTYPE html>
 
@@ -13,8 +14,9 @@
 <meta charset="UTF-8">
 <link href="../style/listStyle.css" type="text/css" rel="stylesheet" >
 <link href="../style/reset.css" type="text/css" rel="stylesheet" >
-<title>Insert title here</title>
+<title>キーワードリスト</title>
 </head>
+
 <body>
 	<%
 		Map userID =null;
@@ -37,13 +39,13 @@
 					<li class="attractionList">
 						<div id="anchorDetail">
 							<div class="thumnail">
-								<img src="${result.imgName}">
+						 <a href="detail?NUM=${result.anum}"><img src="${result.imgName}"></a>
 							</div>
-							<p class="attractionName">${ result.atName }</p>
+							<p class="attractionName">${result.atName}</p>
 						</div>
 						<div id="adminBtnWrap">
-							<a href="attractionModify.jsp?ATNUM=102">修正</a> <a
-								href="delete?ATNUM=${result.anum }">削除</a>
+							<a href="modify?ATNUM=${result.anum}">修正</a> <a
+								href="delete?ATNUM=${result.anum}">削除</a>
 						</div>
 					</li>
 				</c:forEach> 
@@ -60,7 +62,8 @@
 					<li class="attractionList">
 						<div id="anchorDetail">
 							<div class="thumnail">
-								<img src="${result.imgName}">${result.imgName}
+								<a href="detail?NUM=${result.anum }"><img src="${result.imgName}"></a>
+								${result.anum }
 							</div>
 							<p class="attractionName">${ result.atName }</p>
 						</div>

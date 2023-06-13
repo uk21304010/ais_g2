@@ -308,59 +308,7 @@ footer {
 			</h1>
 		</header>
 
-		<div>
-			<div class="dropmenu">
-				<ul>
-					<li class="dropmenu_li">
-						
-						<div class="liList">名所</div>
-						<ul>
-							<%
-							list = cd.showSub("t001");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-					<li class="dropmenu_li">
-						<div class="liList">グルメ</div>
-						<ul>
-							<%
-							list = cd.showSub("t002");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-					<li class="dropmenu_li">
-						<div class="liList">ショッピング</div>
-						<ul>
-							<%
-							list = cd.showSub("t003");
-							for (Product p : list) {
-							%>
-							<li><a href="list?keyNum=<%=p.getAtNum()%>"><%=p.getName()%></a></li>
-							<%
-							}
-							%>
-						</ul>
-					</li>
-				
-					<li class="liList_search_li">
-						<div class="liList_search">
-							<input type="text" class="liList_search_text"
-								placeholder="검색어 입력" maxlength="100">
-							<button type="submit" class="liList_search_btn">검색</button>
-						</div>
-					</li>
-				</ul>
-			</div>
+	
 
 			<h1 class="keyword_title">該当キーワードイメージ</h1>
 			<!-- Swiper -->
