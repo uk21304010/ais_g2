@@ -351,13 +351,13 @@ footer {
 					<li><a href="detail?NUM=1"><div class="liList">桜</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">神社</div></a>
+					<li><a href="detail?NUM=2"><div class="liList">神社</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">ランドマーク</div></a>
+					<li><a href="detail?NUM=3"><div class="liList">ランドマーク</div></a>
 					</li>
 					
-					<li><a href="list"><div class="liList">グルメ</div></a>
+					<li><a href="detail?NUM=4"><div class="liList">グルメ</div></a>
 					</li>
 					
 					
