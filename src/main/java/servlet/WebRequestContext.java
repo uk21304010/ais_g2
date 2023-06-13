@@ -28,7 +28,7 @@ public class WebRequestContext implements RequestContext{
     public WebRequestContext(){}
 
     public String getCommandPath(){
-        //螟画焚request縺ｫ縺ゅｋ繝ｪ繧ｯ繧ｨ繧ｹ繝医�ｮServletPath繧呈歓蜃ｺ
+        
         String servletPath=request.getServletPath();
         String commandPath=servletPath.substring(1);
         return commandPath;
@@ -84,7 +84,7 @@ public class WebRequestContext implements RequestContext{
 		Boolean flag = false;
     	//String imgPath = request.getRealPath("images");
     	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\image";
+    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\webapp\\image";
     	try {
     		List<FileItem> files =sf.parseRequest(imgRequest);
             System.out.println(files);

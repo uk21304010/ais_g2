@@ -13,11 +13,11 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 public class FileUpload {
 	public boolean uploadFile(String path, RequestContext reqc) {
     	HttpServletRequest req = (HttpServletRequest)reqc.getRequest();
-    	String imgPath = req.getRealPath("images");
+    	String imgPath = req.getRealPath("image");
     	System.out.println(imgPath);
     	System.out.println("aa");
     	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
-    	String paths = "C:/pleiades/workspace/Bloom/WebContent/images/product/thumbnail/";
+    	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\webapp\\image";
     	try {
              List<FileItem> files =sf.parseRequest(req);
              System.out.println(files);
