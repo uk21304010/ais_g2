@@ -59,7 +59,9 @@ public class ContentInfoDao{
 			st=cn.prepareStatement(select);
 			st.setInt(1, num);
 			rs=st.executeQuery();
+
 			String path = "image\\";
+
 				while(rs.next()) {
 					Product product = new Product();
 					product.setTitlePlace(rs.getString(1));

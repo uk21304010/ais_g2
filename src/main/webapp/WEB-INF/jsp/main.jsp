@@ -300,7 +300,6 @@ footer {
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?ver=1" />
 
 </head>
-
 <body>
 
    <div id="wrap" class="wrap">
@@ -430,6 +429,7 @@ footer {
 
    <!-- Initialize Swiper -->
    <script>
+
 
     const progressCircle = document.querySelector(".autoplay-progress svg");
     const progressContent = document.querySelector(".autoplay-progress span");

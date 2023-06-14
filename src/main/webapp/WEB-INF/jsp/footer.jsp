@@ -3,12 +3,18 @@
 <!DOCTYPE html>
 <html>
 <style>
+    <footer>
+         <p>© 2023 キーワード探す名所システム</p>
+      </footer>    
+
 footer {
+
     background-color: pink;
     color: black;
 	height: 50px;
   position : relative;
   transform : translateY(-100%);
+
 }
 </style>
 <head>

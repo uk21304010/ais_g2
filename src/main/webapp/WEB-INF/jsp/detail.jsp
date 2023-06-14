@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="dto.*, java.util.*"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Random"%>
@@ -15,6 +15,7 @@ pageEncoding="UTF-8"%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+
 img {
   width: 150px;
   height: 150px;
@@ -58,6 +59,7 @@ display: table;
 	 justify-content: space-around;
 }
 
+
 </style>
 <script>
         function refreshPage() {
@@ -66,7 +68,9 @@ display: table;
     </script>
 </head>
 <header>
+
 <jsp:include page="header.jsp"></jsp:include>
+
 </header>
 
 <%
@@ -83,6 +87,7 @@ move.style.left = parseInt(left) + 100 + "px";
 }
 </script>
 <body>
+
 <%
 for (Product pr : showDetail) {
 %>
@@ -180,6 +185,7 @@ e.printStackTrace();
 <footer>
 <p>© 2023 キーワード探す名所システム</p>
 </footer>
+
 
 </body>
 </html>

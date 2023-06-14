@@ -31,7 +31,9 @@ public class ListInfoDao{
 				pstmt.setInt(1, keyNum);
 				System.out.println(pstmt);
 				rs = pstmt.executeQuery();
+
 				String path = "image\\";
+
 				while(rs.next()) {
 					pd = new Product();
 					pd.setAnum(Integer.parseInt( rs.getString(1)));
