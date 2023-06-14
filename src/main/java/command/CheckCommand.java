@@ -28,7 +28,7 @@ public class CheckCommand extends AbstractCommand{
 			}else {//ユーザーフラグが1の場合
 				Product p = ad.getUser(id, pass);
 				reqc.setSessionParameter("session", p);
-				resc.setTarget("start");
+				resc.setTarget("main");
 			}
 		return resc;
 	}
