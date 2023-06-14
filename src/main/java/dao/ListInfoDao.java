@@ -31,7 +31,7 @@ public class ListInfoDao{
 				pstmt.setInt(1, keyNum);
 				System.out.println(pstmt);
 				rs = pstmt.executeQuery();
-				String path = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\webapp\\image"; 
+				String path = "C:\\Users\\AIS-N\\eclipse-workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\ais_g2\\image"; 
 				while(rs.next()) {
 					pd = new Product();
 					pd.setAnum(Integer.parseInt( rs.getString(1)));

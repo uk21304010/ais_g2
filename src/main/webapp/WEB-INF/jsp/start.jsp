@@ -7,18 +7,15 @@
 	<title>Start</title>
 	</head>
 
-	</style>
 	<body>
 		<form method="get" action="detail">
-			<table border="1" align="center"　>
+			<table border="1" align="center">
 				<tr>
 					<td><input type="text" name="NUM" value="" /><br /></td>
 					<td><input type="submit" value="��懍ｶ�" /></td>
 					<td><input type="submit" value="詳細画面" /></td>
 				</tr>
 			</table>
-
-	
 		</form>
 <p><a href="input">作成画面</a></p>
 <<<<<<< HEAD
@@ -48,7 +45,6 @@
 		</form>
 
 	<p><a href="main">メイン画面へ</a></p>
->>>>>>> fa8c6fc713da5c368b9c4eee48cfb14c94015b10
 
 	</body>
 	</html>

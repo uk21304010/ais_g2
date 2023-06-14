@@ -299,7 +299,6 @@ footer {
 	href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
 </head>
-
 <body>
 	<div id="wrap" class="wrap">
 		<header class="grid">
@@ -372,19 +371,19 @@ footer {
 					</div>
 					<div class="swiper-slide">
 						<img class="img"
-							src="https://p4.wallpaperbetter.com/wallpaper/309/901/310/tokyo-tower-japan-4k-wallpaper-preview.jpg" />
+							src="https://www.agoda.com/wp-content/uploads/2018/07/Experience-Tokyo_landmarks_Tokyo-Tower.jpg" />
 					</div>
 					<div class="swiper-slide">
 						<img class="img"
-							src="https://img.freepik.com/free-photo/cherry-blossoms-and-fuji-mountain-in-spring-at-sunrise-shizuoka-in-japan_335224-110.jpg?t=st=1686295589~exp=1686296189~hmac=f409c13419135fed77c2a327a61bab61e8b2cdae66d6168e57e696e9abdef315" />
+							src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/00/a0000003/img/basic/a0000003_main.jpg?20201223103545" />
 					</div>
 					<div class="swiper-slide">
 						<img class="img"
-							src="https://tripeditor.com/wp-content/uploads/2020/02/25205714/shutterstock_91470158-600x400.jpg" />
+							src="https://rimage.gnst.jp/livejapan.com/public/article/detail/a/00/04/a0004438/img/basic/a0004438_main.png?20200711233445" />
 					</div>
 					<div class="swiper-slide">
 						<img class="img"
-							src="https://cdn.pixabay.com/photo/2020/12/30/14/23/waterfall-5873630_1280.jpg" />
+							src="https://img.kojodan.com/photo/104314.jpg" />
 					</div>
 				</div>
 				<div class="swiper-button-next"></div>
@@ -399,14 +398,18 @@ footer {
 			</div>
 			<div class="keyword_list">
 				<ul>
-					<%
-					for (Product l : list) {
-					%>
-					<li><a href="list"><div class="liList"><%=l.getName()%></div></a>
+					
+					<li><a href="detail?NUM=1"><div class="liList">桜</div></a>
 					</li>
-					<%
-					}
-					%>
+					
+					<li><a href="list"><div class="liList">神社</div></a>
+					</li>
+					
+					<li><a href="list"><div class="liList">ランドマーク</div></a>
+					</li>
+					
+					<li><a href="list"><div class="liList">グルメ</div></a>
+					</li>
 					
 					
 				</ul>
