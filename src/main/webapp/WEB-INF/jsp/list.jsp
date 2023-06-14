@@ -2,16 +2,20 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, dto.*, servlet.*, command.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<jsp:include page="header.jsp"></jsp:include>
 
+<jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE html>
 <style>
 img {
   width: 300px;
   height: 300px;
+}
+footer {
+    background-color: pink;
+    color: black;
+	height: 50px;
+  position : relative;
+  transform : translateY(-100%);
 }
 .flex-container{
 	display: flex;
@@ -22,7 +26,6 @@ img {
 	flex-direction: row;
 	flex-wrap: wrap;
 }
-
 </style>
 <html>
 <head>
@@ -79,4 +82,5 @@ img {
 		}
 	</script>
 </body>
+<footer><p>© 2023 キーワード探す名所システム</p></footer>
 </html>

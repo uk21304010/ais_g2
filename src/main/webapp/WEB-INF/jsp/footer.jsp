@@ -2,21 +2,21 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<style>
+footer {
+    background-color: pink;
+    color: black;
+	height: 50px;
+  position : relative;
+  transform : translateY(-100%);
+}
+</style>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<style>
-footer {
-    display: flex;
-    justify-content: center;
-    padding: 5px;
-    background-color: pink;
-    color: black;
-    bottom: 0;
-    position: sticky;
-}
-</style>
+
 </body>
+<footer><p>© 2023 キーワード探す名所システム</p></footer>
 </html>
