@@ -82,7 +82,7 @@ public class WebRequestContext implements RequestContext{
     public boolean uploadFile() {
     	System.out.println("upload");
 		Boolean flag = false;
-    	//String imgPath = request.getRealPath("images");
+    	String imgPath = request.getRealPath("image");
     	ServletFileUpload sf = new ServletFileUpload(new DiskFileItemFactory());
     	String paths = "C:\\Users\\user\\eclipse-workspace\\ais_g2\\src\\main\\image";
     	try {
