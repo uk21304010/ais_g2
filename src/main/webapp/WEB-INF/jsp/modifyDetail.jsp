@@ -2,18 +2,18 @@
 	contentType="text/html;charset=UTF-8"%>
 <%@page import="java.io.*" import="java.sql.*" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<jsp:include page="header.jsp"></jsp:include>
 <!DOCTYPE>
 <html>
 <head>
 
-<title>Sakura-スレッド一覧</title>
+<title>コンテンツ修正</title>
 </head>
 <header>
 
 </header>
 <body>
-	<h1>Sakuraスレッド一覧</h1>
+	<h1>キーワード名</h1>
 				<form method='post' action='updatedetail' enctype="multipart/form-data">
   <select name='COMBO' >
 	<%
@@ -38,11 +38,12 @@
 		}
 		%>
 		</select>
-			<h1>送信テスト</h1>
+
+			<h1>コンテンツ修正</h1>
 			<input type ='hidden' value="${result.anum}" name='ANUM'multiple><br>
-	商品番号<input type='text' value="${result.name}" name='NAME'multiple><br>
-	商品名<input type='text' value="${result.con}"name='CON'multiple><br>
-	価格<input type='file' name='IMG'multiple><br>
+	タイトル　<input type='text' value="${result.name}" name='NAME'multiple><br>
+	コンテンツ<textarea name='CON'　cols="30" rows="5" style ="resize :none">${result.con}</textarea><br> 
+	イメージ　<input type='file' name='IMG'multiple><br>
 	<input type='submit' value='登録'>
 	</form>
 </body>

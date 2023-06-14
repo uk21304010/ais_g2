@@ -13,8 +13,14 @@ public class Product implements Serializable{
 	private String subthumbScreen;
 	
 	private String titleSub;
-
+	private int user_id;
 	
+	public int getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
+	}
 	private String name;
 	private String con;
 	private String img;

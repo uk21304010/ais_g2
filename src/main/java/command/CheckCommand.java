@@ -20,15 +20,15 @@ public class CheckCommand extends AbstractCommand{
 		
 		AccountDao ad = new AccountDao();
 		
-		boolean flag = ad.checkId(pass, id);
+		boolean flag = ad.checkId(id, pass);
 		System.out.println(flag);
 			if(flag == false) {//ユーザーフラグが0の場合
 				resc.setResult("無効なアカウントです。");
 				resc.setTarget("login");
 			}else {//ユーザーフラグが1の場合
-				Product p = ad.getUser(pass, id);
-				reqc.setSessionParameter("user", p);
-				resc.setTarget("view");
+				Product p = ad.getUser(id, pass);
+				reqc.setSessionParameter("session", p);
+				resc.setTarget("main");
 			}
 		return resc;
 	}
