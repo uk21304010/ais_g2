@@ -1,7 +1,8 @@
-<%@page import="dto.Product"%>
-<%@page import="java.util.ArrayList"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
+   <%@page import="dto.Product"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="dao.ListInfoDao"%>
 <%@page import="java.io.*" import="java.sql.*" import="java.util.*"
    import="dao.ContentInfoDao"%>
@@ -13,7 +14,6 @@ ContentInfoDao cd = new ContentInfoDao();
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="header.jsp"></jsp:include>
 <meta charset="utf-8">
 <title>MAIN画面</title>
 <style type="text/css">
@@ -460,6 +460,5 @@ footer {
 </body>
 <footer>
 
-<jsp:include page="footer.jsp"></jsp:include>
 </footer>
 </html>
